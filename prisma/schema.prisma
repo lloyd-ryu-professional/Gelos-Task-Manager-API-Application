@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Consultant {
+  ConsultantID                     Int    @id @default(autoincrement())
+  ConsultantFirstName              String
+  ConsultantLastName               String
+  ConsultantRole                   String
+  Task_Task_ConsultantToConsultant Task[] @relation("Task_ConsultantToConsultant")
+}
+
+model Task {
+  TaskID                                 Int          @id @default(autoincrement())
+  User                                   Int
+  TaskName                               String
+  DueDate                                DateTime
+  Priority                               Int
+  Consultant                             Int?
+  IsCompleted                            Boolean
+  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [Consultant], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
+  TaskPriority                           TaskPriority @relation(fields: [Priority], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
+  User_Task_UserToUser                   User         @relation("Task_UserToUser", fields: [User], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model TaskPriority {
+  PriorityID    Int    @id @default(autoincrement())
+  PriorityTitle String @unique(map: "sqlite_autoindex_TaskPriority_1")
+  Task          Task[]
+}
+
+model User {
+  UserID                           Int      @id @default(autoincrement())
+  Email                            String
+  UserName                         String   @unique(map: "sqlite_autoindex_User_1")
+  UserFirstName                    String
+  UserLastName                     String
+  Password                         String
+  UserRole                         Int
+  Task_Task_UserToUser             Task[]   @relation("Task_UserToUser")
+  UserRole_User_UserRoleToUserRole UserRole @relation("User_UserRoleToUserRole", fields: [UserRole], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model UserRole {
+  UserRoleID                   Int    @id @default(autoincrement())
+  UserRoleName                 String @unique(map: "sqlite_autoindex_UserRole_1")
+  User_User_UserRoleToUserRole User[] @relation("User_UserRoleToUserRole")
+}

@@ -1,7 +1,8 @@
 import sqlite3 from "better-sqlite3";
 import {PrismaClient} from "@prisma/client";
-
-const prisma = new PrismaClient();
+import {PrismaBetterSqlite3} from "@prisma/adapter-better-sqlite3";
+import "dotenv/config";
+import {prisma} from "./prisma.js";
 
 const consultantData: string[] = [
     "Accounts Clerk (Payable)|Alice Johnson",
@@ -120,6 +121,12 @@ const consultantsConversion = consultantData.map((entry) => {
     };
 });
 
+async function consultantSeed() {
+    await prisma.consultant.createMany({
+        data: consultantsConversion,
+    });
+}
+
 async function taskPrioritySeed() {
     await prisma.taskPriority.createMany({
         data: [
@@ -164,27 +171,36 @@ async function userSeed() {
     });
 }
 
-async function consultantSeed() {
-    await prisma.consultant.createMany({
-        data: consultantsConversion,
-    });
-}
-
 async function taskSeed() {
     await prisma.task.createMany({
         data: [
             {TaskID: 1, User: 1, TaskName: "task 1", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
-            {TaskID: 2, User: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 7, IsCompleted: false},
-            {TaskID: 3, User: 1, TaskName: "task 3", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 5, IsCompleted: false},
+            {TaskID: 2, User: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
+            {TaskID: 3, User: 1, TaskName: "task 3", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
         ]
     })
 }
 
 async function main() {
-    await taskPrioritySeed();
-    await userRoleSeed();
-    await userSeed();
+    await prisma.task.deleteMany({});
+    await prisma.consultant.deleteMany({});
+    await prisma.taskPriority.deleteMany({});
+    await prisma.user.deleteMany({});
+    await prisma.userRole.deleteMany({});
+
+    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Task';`);
+    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Consultant';`);
+    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='TaskPriority';`);
+    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='User';`);
+    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='UserRole';`);
+
+    console.log("Deleted seed data and reset autoincrement");
+
     await consultantSeed();
+    await userRoleSeed();
+    await taskPrioritySeed();
+    await userSeed();
+    await taskSeed();
 
     console.log("All seeds completed.");
 }

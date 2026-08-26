@@ -156,7 +156,7 @@ async function userSeed() {
                 UserLastName: "User",
                 Email: "user@test.com",
                 Password: "password123",
-                UserRole: 1,
+                UserRoleID: 1,
             },
             {
                 UserID: 2,
@@ -165,7 +165,7 @@ async function userSeed() {
                 UserLastName: "Admin",
                 Email: "admin@test.com",
                 Password: "password456",
-                UserRole: 2,
+                UserRoleID: 2,
             },
         ],
     });
@@ -174,9 +174,9 @@ async function userSeed() {
 async function taskSeed() {
     await prisma.task.createMany({
         data: [
-            {TaskID: 1, User: 1, TaskName: "task 1", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
-            {TaskID: 2, User: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
-            {TaskID: 3, User: 1, TaskName: "task 3", DueDate: new Date("2026-9-5"), Priority: 1, Consultant: 1, IsCompleted: false},
+            {TaskID: 1, UserID: 1, TaskName: "task 1", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
+            {TaskID: 2, UserID: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
+            {TaskID: 3, UserID: 1, TaskName: "task 3", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
         ]
     })
 }

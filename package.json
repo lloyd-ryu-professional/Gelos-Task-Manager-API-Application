@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node src/server.ts",
+    "start": "tsx src/server.ts",
     "seed": "tsx prisma/seed-data.ts"
   },
   "dependencies": {

@@ -1,11 +1,18 @@
-import "dotenv/config";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from '@prisma/client';
+import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
+import dotenv from 'dotenv';
 
-const connectionString = `${process.env.DATABASE_URL}`;
+dotenv.config();
 
-const adapter = new PrismaBetterSqlite3({ url: connectionString });
+// Define your local database file path string
+const databaseUrl = process.env.DATABASE_URL || 'file:./dev.db';
 
-const prisma = new PrismaClient({ adapter });
+// 1. Initialize the SQLite driver adapter wrapper
+const adapter = new PrismaBetterSqlite3({
+    url: databaseUrl
+});
 
-export { prisma };
+// 2. Pass the adapter directly into the constructor object
+export const prisma = new PrismaClient({
+    adapter
+});

@@ -10,6 +10,6 @@ export default defineConfig({
     seed: "tsx prisma/seed-data.ts",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    url: process.env.DATABASE_URL ||  "file:./Gelos-Task-Manager.db",
   },
 });

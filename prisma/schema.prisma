@@ -16,15 +16,15 @@ model Consultant {
 
 model Task {
   TaskID                                 Int          @id @default(autoincrement())
-  User                                   Int
+  UserID                                   Int
   TaskName                               String
   DueDate                                DateTime
-  Priority                               Int
-  Consultant                             Int?
+  PriorityID                               Int
+  ConsultantID                             Int?
   IsCompleted                            Boolean
-  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [Consultant], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
-  TaskPriority                           TaskPriority @relation(fields: [Priority], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
-  User_Task_UserToUser                   User         @relation("Task_UserToUser", fields: [User], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
+  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [ConsultantID], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
+  TaskPriority                           TaskPriority @relation(fields: [PriorityID], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
+  User_Task_UserToUser                   User         @relation("Task_UserToUser", fields: [UserID], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model TaskPriority {
@@ -40,9 +40,9 @@ model User {
   UserFirstName                    String
   UserLastName                     String
   Password                         String
-  UserRole                         Int
+  UserRoleID                         Int
   Task_Task_UserToUser             Task[]   @relation("Task_UserToUser")
-  UserRole_User_UserRoleToUserRole UserRole @relation("User_UserRoleToUserRole", fields: [UserRole], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
+  UserRole_User_UserRoleToUserRole UserRole @relation("User_UserRoleToUserRole", fields: [UserRoleID], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model UserRole {

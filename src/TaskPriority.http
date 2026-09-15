@@ -1,0 +1,44 @@
+@baseURL = http://localhost:5000
+@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZUlkIjoyLCJpYXQiOjE3ODc5NTkzMTYsImV4cCI6MTc4Nzk2NjUxNn0.q1mRj2xiO8PZOTWpCCoEnaWU0vcJPDokIcU2h6nGAwY"
+
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
+GET {{baseURL}}/task-priorities
+Authorization: Bearer {{JWTToken}}
+###
+
+GET {{baseURL}}/task-priorities/search?PriorityTitle=High
+
+###
+
+GET {{baseURL}}/task-priorities/1
+
+###
+
+POST {{baseURL}}/task-priorities
+Content-Type: application/json
+
+{
+  "PriorityTitle": "Urgent"
+}
+
+###
+
+PUT {{baseURL}}/task-priorities/5
+Content-Type: application/json
+
+{
+  "PriorityID": 5,
+  "PriorityTitle": "Very High"
+}
+
+###
+
+DELETE {{baseURL}}/task-priorities/5

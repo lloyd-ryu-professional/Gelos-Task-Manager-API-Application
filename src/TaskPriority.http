@@ -1,7 +1,17 @@
 @baseURL = http://localhost:5000
+@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZUlkIjoyLCJpYXQiOjE3ODc5NTkzMTYsImV4cCI6MTc4Nzk2NjUxNn0.q1mRj2xiO8PZOTWpCCoEnaWU0vcJPDokIcU2h6nGAwY"
 
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
 GET {{baseURL}}/task-priorities
-
+Authorization: Bearer {{JWTToken}}
 ###
 
 GET {{baseURL}}/task-priorities/search?PriorityTitle=High

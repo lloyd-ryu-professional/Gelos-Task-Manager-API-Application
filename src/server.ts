@@ -1,6 +1,7 @@
 import express from 'express';
 import sqlite3 from 'better-sqlite3';
 import taskPriorityRoutes from "./routes/Task-PriorityRouter"
+import authRoutes from "./routes/authRoutes"
 const app = express();
 
 app.use(express.json());
@@ -16,6 +17,7 @@ app.get("/", (req: express.Request, res: express.Response): void => {
 })
 
 app.use("/task-priorities", taskPriorityRoutes)
+app.use("/auth", authRoutes)
 
 app.listen(PORT, () : void => {
     console.log(`Server started on port ${PORT}`);

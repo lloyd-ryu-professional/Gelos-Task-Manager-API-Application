@@ -2,10 +2,12 @@ import "dotenv/config";
 import express from "express";
 import {Router} from "express";
 import {prisma} from "../../prisma/prisma"
+import {auth} from "../middleware/auth"
+import {authorizeRole} from "../middleware/roleAuth"
 
 const router = Router();
 
-router.get("/", async (req: express.Request, res: express.Response) => {
+router.get("/", auth, authorizeRole("User", "Admin"), async ( res: express.Response) => {
     try {
         const TaskPriority = await prisma.taskPriority.findMany();
         res.status(200).json(TaskPriority);
@@ -14,7 +16,7 @@ router.get("/", async (req: express.Request, res: express.Response) => {
     }
 });
 
-router.get("/search", async (req: express.Request, res: express.Response) => {
+router.get("/search",auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
     try {
         const {PriorityTitle} = req.query;
 
@@ -37,7 +39,7 @@ router.get("/search", async (req: express.Request, res: express.Response) => {
     }
 })
 
-router.get("/:id", async (req: express.Request, res: express.Response) => {
+router.get("/:id", auth, authorizeRole("User", "Admin"),async (req: express.Request, res: express.Response) => {
     try {
         const {id} = req.params;
         const taskPriorities = await prisma.taskPriority.findUnique({
@@ -58,7 +60,7 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
 });
 
 
-router.post("/", async (req: express.Request, res: express.Response) => {
+router.post("/", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
     try {
         const {PriorityID, PriorityTitle, Task} = req.body;
         const newTaskPriority = await prisma.taskPriority.create({
@@ -74,10 +76,10 @@ router.post("/", async (req: express.Request, res: express.Response) => {
     }
 })
 
-router.put("/:id", async (req: express.Request, res: express.Response) => {
+router.put("/:id", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
     try {
         const {id} = req.params;
-        const {PriorityTitle, Task} = req.body;
+        const {PriorityTitle} = req.body;
 
         const updatedTaskPriority = await prisma.taskPriority.update({
             where: {
@@ -96,7 +98,7 @@ router.put("/:id", async (req: express.Request, res: express.Response) => {
     }
 })
 
-router.delete("/:id", async (req: express.Request, res: express.Response) => {
+router.delete("/:id", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
     try {
         const {id} = req.params;
         const deletedTaskPriority = await prisma.taskPriority.delete({

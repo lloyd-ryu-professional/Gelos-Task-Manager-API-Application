@@ -3,6 +3,7 @@ import {PrismaClient} from "@prisma/client";
 import {PrismaBetterSqlite3} from "@prisma/adapter-better-sqlite3";
 import "dotenv/config";
 import {prisma} from "./prisma.js";
+import bcrypt from "bcryptjs";
 
 const consultantData: string[] = [
     "Accounts Clerk (Payable)|Alice Johnson",
@@ -155,7 +156,7 @@ async function userSeed() {
                 UserFirstName: "Jester",
                 UserLastName: "User",
                 Email: "user@test.com",
-                Password: "password123",
+                Password: await bcrypt.hash("password123", 10),
                 UserRoleID: 1,
             },
             {
@@ -164,7 +165,7 @@ async function userSeed() {
                 UserFirstName: "Adam",
                 UserLastName: "Admin",
                 Email: "admin@test.com",
-                Password: "password456",
+                Password: await bcrypt.hash("password456", 10),
                 UserRoleID: 2,
             },
         ],

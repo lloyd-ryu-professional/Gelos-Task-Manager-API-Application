@@ -1351,11 +1351,11 @@ export namespace Prisma {
    */
 
   export type UserRoleCountOutputType = {
-    User_User_UserRoleToUserRole: number
+    User: number
   }
 
   export type UserRoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User_User_UserRoleToUserRole?: boolean | UserRoleCountOutputTypeCountUser_User_UserRoleToUserRoleArgs
+    User?: boolean | UserRoleCountOutputTypeCountUserArgs
   }
 
   // Custom InputTypes
@@ -1372,7 +1372,7 @@ export namespace Prisma {
   /**
    * UserRoleCountOutputType without action
    */
-  export type UserRoleCountOutputTypeCountUser_User_UserRoleToUserRoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserRoleCountOutputTypeCountUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
   }
 
@@ -2701,9 +2701,9 @@ export namespace Prisma {
     PriorityID?: boolean
     ConsultantID?: boolean
     IsCompleted?: boolean
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2714,9 +2714,9 @@ export namespace Prisma {
     PriorityID?: boolean
     ConsultantID?: boolean
     IsCompleted?: boolean
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2727,9 +2727,9 @@ export namespace Prisma {
     PriorityID?: boolean
     ConsultantID?: boolean
     IsCompleted?: boolean
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectScalar = {
@@ -2744,27 +2744,27 @@ export namespace Prisma {
 
   export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"TaskID" | "UserID" | "TaskName" | "DueDate" | "PriorityID" | "ConsultantID" | "IsCompleted", ExtArgs["result"]["task"]>
   export type TaskInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }
   export type TaskIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }
   export type TaskIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
-    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
     User_Task_UserToUser?: boolean | UserDefaultArgs<ExtArgs>
+    TaskPriority?: boolean | TaskPriorityDefaultArgs<ExtArgs>
+    Consultant_Task_ConsultantToConsultant?: boolean | Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>
   }
 
   export type $TaskPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Task"
     objects: {
-      Consultant_Task_ConsultantToConsultant: Prisma.$ConsultantPayload<ExtArgs> | null
-      TaskPriority: Prisma.$TaskPriorityPayload<ExtArgs>
       User_Task_UserToUser: Prisma.$UserPayload<ExtArgs>
+      TaskPriority: Prisma.$TaskPriorityPayload<ExtArgs>
+      Consultant_Task_ConsultantToConsultant: Prisma.$ConsultantPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       TaskID: number
@@ -3168,9 +3168,9 @@ export namespace Prisma {
    */
   export interface Prisma__TaskClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Consultant_Task_ConsultantToConsultant<T extends Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs> = {}>(args?: Subset<T, Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>>): Prisma__ConsultantClient<$Result.GetResult<Prisma.$ConsultantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    TaskPriority<T extends TaskPriorityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TaskPriorityDefaultArgs<ExtArgs>>): Prisma__TaskPriorityClient<$Result.GetResult<Prisma.$TaskPriorityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     User_Task_UserToUser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    TaskPriority<T extends TaskPriorityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TaskPriorityDefaultArgs<ExtArgs>>): Prisma__TaskPriorityClient<$Result.GetResult<Prisma.$TaskPriorityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Consultant_Task_ConsultantToConsultant<T extends Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs> = {}>(args?: Subset<T, Task$Consultant_Task_ConsultantToConsultantArgs<ExtArgs>>): Prisma__ConsultantClient<$Result.GetResult<Prisma.$ConsultantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4930,7 +4930,7 @@ export namespace Prisma {
     Password?: boolean
     UserRoleID?: boolean
     Task_Task_UserToUser?: boolean | User$Task_Task_UserToUserArgs<ExtArgs>
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -4942,7 +4942,7 @@ export namespace Prisma {
     UserLastName?: boolean
     Password?: boolean
     UserRoleID?: boolean
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4953,7 +4953,7 @@ export namespace Prisma {
     UserLastName?: boolean
     Password?: boolean
     UserRoleID?: boolean
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -4969,21 +4969,21 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"UserID" | "Email" | "UserName" | "UserFirstName" | "UserLastName" | "Password" | "UserRoleID", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Task_Task_UserToUser?: boolean | User$Task_Task_UserToUserArgs<ExtArgs>
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    UserRole_User_UserRoleToUserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+    UserRole?: boolean | UserRoleDefaultArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
       Task_Task_UserToUser: Prisma.$TaskPayload<ExtArgs>[]
-      UserRole_User_UserRoleToUserRole: Prisma.$UserRolePayload<ExtArgs>
+      UserRole: Prisma.$UserRolePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       UserID: number
@@ -5388,7 +5388,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Task_Task_UserToUser<T extends User$Task_Task_UserToUserArgs<ExtArgs> = {}>(args?: Subset<T, User$Task_Task_UserToUserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UserRole_User_UserRoleToUserRole<T extends UserRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserRoleDefaultArgs<ExtArgs>>): Prisma__UserRoleClient<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    UserRole<T extends UserRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserRoleDefaultArgs<ExtArgs>>): Prisma__UserRoleClient<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6040,7 +6040,7 @@ export namespace Prisma {
   export type UserRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     UserRoleID?: boolean
     UserRoleName?: boolean
-    User_User_UserRoleToUserRole?: boolean | UserRole$User_User_UserRoleToUserRoleArgs<ExtArgs>
+    User?: boolean | UserRole$UserArgs<ExtArgs>
     _count?: boolean | UserRoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userRole"]>
 
@@ -6061,7 +6061,7 @@ export namespace Prisma {
 
   export type UserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"UserRoleID" | "UserRoleName", ExtArgs["result"]["userRole"]>
   export type UserRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User_User_UserRoleToUserRole?: boolean | UserRole$User_User_UserRoleToUserRoleArgs<ExtArgs>
+    User?: boolean | UserRole$UserArgs<ExtArgs>
     _count?: boolean | UserRoleCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserRoleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6070,7 +6070,7 @@ export namespace Prisma {
   export type $UserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserRole"
     objects: {
-      User_User_UserRoleToUserRole: Prisma.$UserPayload<ExtArgs>[]
+      User: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       UserRoleID: number
@@ -6469,7 +6469,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    User_User_UserRoleToUserRole<T extends UserRole$User_User_UserRoleToUserRoleArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$User_User_UserRoleToUserRoleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    User<T extends UserRole$UserArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$UserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6892,9 +6892,9 @@ export namespace Prisma {
   }
 
   /**
-   * UserRole.User_User_UserRoleToUserRole
+   * UserRole.User
    */
-  export type UserRole$User_User_UserRoleToUserRoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserRole$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the User
      */
@@ -7119,9 +7119,9 @@ export namespace Prisma {
     PriorityID?: IntFilter<"Task"> | number
     ConsultantID?: IntNullableFilter<"Task"> | number | null
     IsCompleted?: BoolFilter<"Task"> | boolean
-    Consultant_Task_ConsultantToConsultant?: XOR<ConsultantNullableScalarRelationFilter, ConsultantWhereInput> | null
-    TaskPriority?: XOR<TaskPriorityScalarRelationFilter, TaskPriorityWhereInput>
     User_Task_UserToUser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    TaskPriority?: XOR<TaskPriorityScalarRelationFilter, TaskPriorityWhereInput>
+    Consultant_Task_ConsultantToConsultant?: XOR<ConsultantNullableScalarRelationFilter, ConsultantWhereInput> | null
   }
 
   export type TaskOrderByWithRelationInput = {
@@ -7132,9 +7132,9 @@ export namespace Prisma {
     PriorityID?: SortOrder
     ConsultantID?: SortOrderInput | SortOrder
     IsCompleted?: SortOrder
-    Consultant_Task_ConsultantToConsultant?: ConsultantOrderByWithRelationInput
-    TaskPriority?: TaskPriorityOrderByWithRelationInput
     User_Task_UserToUser?: UserOrderByWithRelationInput
+    TaskPriority?: TaskPriorityOrderByWithRelationInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantOrderByWithRelationInput
   }
 
   export type TaskWhereUniqueInput = Prisma.AtLeast<{
@@ -7148,9 +7148,9 @@ export namespace Prisma {
     PriorityID?: IntFilter<"Task"> | number
     ConsultantID?: IntNullableFilter<"Task"> | number | null
     IsCompleted?: BoolFilter<"Task"> | boolean
-    Consultant_Task_ConsultantToConsultant?: XOR<ConsultantNullableScalarRelationFilter, ConsultantWhereInput> | null
-    TaskPriority?: XOR<TaskPriorityScalarRelationFilter, TaskPriorityWhereInput>
     User_Task_UserToUser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    TaskPriority?: XOR<TaskPriorityScalarRelationFilter, TaskPriorityWhereInput>
+    Consultant_Task_ConsultantToConsultant?: XOR<ConsultantNullableScalarRelationFilter, ConsultantWhereInput> | null
   }, "TaskID">
 
   export type TaskOrderByWithAggregationInput = {
@@ -7235,7 +7235,7 @@ export namespace Prisma {
     Password?: StringFilter<"User"> | string
     UserRoleID?: IntFilter<"User"> | number
     Task_Task_UserToUser?: TaskListRelationFilter
-    UserRole_User_UserRoleToUserRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+    UserRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7247,7 +7247,7 @@ export namespace Prisma {
     Password?: SortOrder
     UserRoleID?: SortOrder
     Task_Task_UserToUser?: TaskOrderByRelationAggregateInput
-    UserRole_User_UserRoleToUserRole?: UserRoleOrderByWithRelationInput
+    UserRole?: UserRoleOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7262,7 +7262,7 @@ export namespace Prisma {
     Password?: StringFilter<"User"> | string
     UserRoleID?: IntFilter<"User"> | number
     Task_Task_UserToUser?: TaskListRelationFilter
-    UserRole_User_UserRoleToUserRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+    UserRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }, "UserID" | "UserName">
 
   export type UserOrderByWithAggregationInput = {
@@ -7299,13 +7299,13 @@ export namespace Prisma {
     NOT?: UserRoleWhereInput | UserRoleWhereInput[]
     UserRoleID?: IntFilter<"UserRole"> | number
     UserRoleName?: StringFilter<"UserRole"> | string
-    User_User_UserRoleToUserRole?: UserListRelationFilter
+    User?: UserListRelationFilter
   }
 
   export type UserRoleOrderByWithRelationInput = {
     UserRoleID?: SortOrder
     UserRoleName?: SortOrder
-    User_User_UserRoleToUserRole?: UserOrderByRelationAggregateInput
+    User?: UserOrderByRelationAggregateInput
   }
 
   export type UserRoleWhereUniqueInput = Prisma.AtLeast<{
@@ -7314,7 +7314,7 @@ export namespace Prisma {
     AND?: UserRoleWhereInput | UserRoleWhereInput[]
     OR?: UserRoleWhereInput[]
     NOT?: UserRoleWhereInput | UserRoleWhereInput[]
-    User_User_UserRoleToUserRole?: UserListRelationFilter
+    User?: UserListRelationFilter
   }, "UserRoleID" | "UserRoleName">
 
   export type UserRoleOrderByWithAggregationInput = {
@@ -7389,9 +7389,9 @@ export namespace Prisma {
     TaskName: string
     DueDate: Date | string
     IsCompleted: boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
-    TaskPriority: TaskPriorityCreateNestedOneWithoutTaskInput
     User_Task_UserToUser: UserCreateNestedOneWithoutTask_Task_UserToUserInput
+    TaskPriority: TaskPriorityCreateNestedOneWithoutTaskInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
   }
 
   export type TaskUncheckedCreateInput = {
@@ -7408,9 +7408,9 @@ export namespace Prisma {
     TaskName?: StringFieldUpdateOperationsInput | string
     DueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     IsCompleted?: BoolFieldUpdateOperationsInput | boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
-    TaskPriority?: TaskPriorityUpdateOneRequiredWithoutTaskNestedInput
     User_Task_UserToUser?: UserUpdateOneRequiredWithoutTask_Task_UserToUserNestedInput
+    TaskPriority?: TaskPriorityUpdateOneRequiredWithoutTaskNestedInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
   }
 
   export type TaskUncheckedUpdateInput = {
@@ -7492,7 +7492,7 @@ export namespace Prisma {
     UserLastName: string
     Password: string
     Task_Task_UserToUser?: TaskCreateNestedManyWithoutUser_Task_UserToUserInput
-    UserRole_User_UserRoleToUserRole: UserRoleCreateNestedOneWithoutUser_User_UserRoleToUserRoleInput
+    UserRole: UserRoleCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7513,7 +7513,7 @@ export namespace Prisma {
     UserLastName?: StringFieldUpdateOperationsInput | string
     Password?: StringFieldUpdateOperationsInput | string
     Task_Task_UserToUser?: TaskUpdateManyWithoutUser_Task_UserToUserNestedInput
-    UserRole_User_UserRoleToUserRole?: UserRoleUpdateOneRequiredWithoutUser_User_UserRoleToUserRoleNestedInput
+    UserRole?: UserRoleUpdateOneRequiredWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7557,24 +7557,24 @@ export namespace Prisma {
 
   export type UserRoleCreateInput = {
     UserRoleName: string
-    User_User_UserRoleToUserRole?: UserCreateNestedManyWithoutUserRole_User_UserRoleToUserRoleInput
+    User?: UserCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateInput = {
     UserRoleID?: number
     UserRoleName: string
-    User_User_UserRoleToUserRole?: UserUncheckedCreateNestedManyWithoutUserRole_User_UserRoleToUserRoleInput
+    User?: UserUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUpdateInput = {
     UserRoleName?: StringFieldUpdateOperationsInput | string
-    User_User_UserRoleToUserRole?: UserUpdateManyWithoutUserRole_User_UserRoleToUserRoleNestedInput
+    User?: UserUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateInput = {
     UserRoleID?: IntFieldUpdateOperationsInput | number
     UserRoleName?: StringFieldUpdateOperationsInput | string
-    User_User_UserRoleToUserRole?: UserUncheckedUpdateManyWithoutUserRole_User_UserRoleToUserRoleNestedInput
+    User?: UserUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleCreateManyInput = {
@@ -7715,9 +7715,9 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type ConsultantNullableScalarRelationFilter = {
-    is?: ConsultantWhereInput | null
-    isNot?: ConsultantWhereInput | null
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type TaskPriorityScalarRelationFilter = {
@@ -7725,9 +7725,9 @@ export namespace Prisma {
     isNot?: TaskPriorityWhereInput
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type ConsultantNullableScalarRelationFilter = {
+    is?: ConsultantWhereInput | null
+    isNot?: ConsultantWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -7972,10 +7972,10 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
-  export type ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput = {
-    create?: XOR<ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput, ConsultantUncheckedCreateWithoutTask_Task_ConsultantToConsultantInput>
-    connectOrCreate?: ConsultantCreateOrConnectWithoutTask_Task_ConsultantToConsultantInput
-    connect?: ConsultantWhereUniqueInput
+  export type UserCreateNestedOneWithoutTask_Task_UserToUserInput = {
+    create?: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTask_Task_UserToUserInput
+    connect?: UserWhereUniqueInput
   }
 
   export type TaskPriorityCreateNestedOneWithoutTaskInput = {
@@ -7984,10 +7984,10 @@ export namespace Prisma {
     connect?: TaskPriorityWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutTask_Task_UserToUserInput = {
-    create?: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTask_Task_UserToUserInput
-    connect?: UserWhereUniqueInput
+  export type ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput = {
+    create?: XOR<ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput, ConsultantUncheckedCreateWithoutTask_Task_ConsultantToConsultantInput>
+    connectOrCreate?: ConsultantCreateOrConnectWithoutTask_Task_ConsultantToConsultantInput
+    connect?: ConsultantWhereUniqueInput
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -7998,14 +7998,12 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput = {
-    create?: XOR<ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput, ConsultantUncheckedCreateWithoutTask_Task_ConsultantToConsultantInput>
-    connectOrCreate?: ConsultantCreateOrConnectWithoutTask_Task_ConsultantToConsultantInput
-    upsert?: ConsultantUpsertWithoutTask_Task_ConsultantToConsultantInput
-    disconnect?: ConsultantWhereInput | boolean
-    delete?: ConsultantWhereInput | boolean
-    connect?: ConsultantWhereUniqueInput
-    update?: XOR<XOR<ConsultantUpdateToOneWithWhereWithoutTask_Task_ConsultantToConsultantInput, ConsultantUpdateWithoutTask_Task_ConsultantToConsultantInput>, ConsultantUncheckedUpdateWithoutTask_Task_ConsultantToConsultantInput>
+  export type UserUpdateOneRequiredWithoutTask_Task_UserToUserNestedInput = {
+    create?: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTask_Task_UserToUserInput
+    upsert?: UserUpsertWithoutTask_Task_UserToUserInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTask_Task_UserToUserInput, UserUpdateWithoutTask_Task_UserToUserInput>, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
   }
 
   export type TaskPriorityUpdateOneRequiredWithoutTaskNestedInput = {
@@ -8016,12 +8014,14 @@ export namespace Prisma {
     update?: XOR<XOR<TaskPriorityUpdateToOneWithWhereWithoutTaskInput, TaskPriorityUpdateWithoutTaskInput>, TaskPriorityUncheckedUpdateWithoutTaskInput>
   }
 
-  export type UserUpdateOneRequiredWithoutTask_Task_UserToUserNestedInput = {
-    create?: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTask_Task_UserToUserInput
-    upsert?: UserUpsertWithoutTask_Task_UserToUserInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTask_Task_UserToUserInput, UserUpdateWithoutTask_Task_UserToUserInput>, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
+  export type ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput = {
+    create?: XOR<ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput, ConsultantUncheckedCreateWithoutTask_Task_ConsultantToConsultantInput>
+    connectOrCreate?: ConsultantCreateOrConnectWithoutTask_Task_ConsultantToConsultantInput
+    upsert?: ConsultantUpsertWithoutTask_Task_ConsultantToConsultantInput
+    disconnect?: ConsultantWhereInput | boolean
+    delete?: ConsultantWhereInput | boolean
+    connect?: ConsultantWhereUniqueInput
+    update?: XOR<XOR<ConsultantUpdateToOneWithWhereWithoutTask_Task_ConsultantToConsultantInput, ConsultantUpdateWithoutTask_Task_ConsultantToConsultantInput>, ConsultantUncheckedUpdateWithoutTask_Task_ConsultantToConsultantInput>
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -8081,9 +8081,9 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
   }
 
-  export type UserRoleCreateNestedOneWithoutUser_User_UserRoleToUserRoleInput = {
-    create?: XOR<UserRoleCreateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedCreateWithoutUser_User_UserRoleToUserRoleInput>
-    connectOrCreate?: UserRoleCreateOrConnectWithoutUser_User_UserRoleToUserRoleInput
+  export type UserRoleCreateNestedOneWithoutUserInput = {
+    create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput
     connect?: UserRoleWhereUniqueInput
   }
 
@@ -8108,12 +8108,12 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
-  export type UserRoleUpdateOneRequiredWithoutUser_User_UserRoleToUserRoleNestedInput = {
-    create?: XOR<UserRoleCreateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedCreateWithoutUser_User_UserRoleToUserRoleInput>
-    connectOrCreate?: UserRoleCreateOrConnectWithoutUser_User_UserRoleToUserRoleInput
-    upsert?: UserRoleUpsertWithoutUser_User_UserRoleToUserRoleInput
+  export type UserRoleUpdateOneRequiredWithoutUserNestedInput = {
+    create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput
+    upsert?: UserRoleUpsertWithoutUserInput
     connect?: UserRoleWhereUniqueInput
-    update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutUser_User_UserRoleToUserRoleInput, UserRoleUpdateWithoutUser_User_UserRoleToUserRoleInput>, UserRoleUncheckedUpdateWithoutUser_User_UserRoleToUserRoleInput>
+    update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutUserInput, UserRoleUpdateWithoutUserInput>, UserRoleUncheckedUpdateWithoutUserInput>
   }
 
   export type TaskUncheckedUpdateManyWithoutUser_Task_UserToUserNestedInput = {
@@ -8130,45 +8130,45 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
-  export type UserCreateNestedManyWithoutUserRole_User_UserRoleToUserRoleInput = {
-    create?: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput> | UserCreateWithoutUserRole_User_UserRoleToUserRoleInput[] | UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput | UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput[]
-    createMany?: UserCreateManyUserRole_User_UserRoleToUserRoleInputEnvelope
+  export type UserCreateNestedManyWithoutUserRoleInput = {
+    create?: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput> | UserCreateWithoutUserRoleInput[] | UserUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserRoleInput | UserCreateOrConnectWithoutUserRoleInput[]
+    createMany?: UserCreateManyUserRoleInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutUserRole_User_UserRoleToUserRoleInput = {
-    create?: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput> | UserCreateWithoutUserRole_User_UserRoleToUserRoleInput[] | UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput | UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput[]
-    createMany?: UserCreateManyUserRole_User_UserRoleToUserRoleInputEnvelope
+  export type UserUncheckedCreateNestedManyWithoutUserRoleInput = {
+    create?: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput> | UserCreateWithoutUserRoleInput[] | UserUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserRoleInput | UserCreateOrConnectWithoutUserRoleInput[]
+    createMany?: UserCreateManyUserRoleInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type UserUpdateManyWithoutUserRole_User_UserRoleToUserRoleNestedInput = {
-    create?: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput> | UserCreateWithoutUserRole_User_UserRoleToUserRoleInput[] | UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput | UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput | UserUpsertWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput[]
-    createMany?: UserCreateManyUserRole_User_UserRoleToUserRoleInputEnvelope
+  export type UserUpdateManyWithoutUserRoleNestedInput = {
+    create?: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput> | UserCreateWithoutUserRoleInput[] | UserUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserRoleInput | UserCreateOrConnectWithoutUserRoleInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutUserRoleInput | UserUpsertWithWhereUniqueWithoutUserRoleInput[]
+    createMany?: UserCreateManyUserRoleInputEnvelope
     set?: UserWhereUniqueInput | UserWhereUniqueInput[]
     disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
     delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput | UserUpdateWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutUserRole_User_UserRoleToUserRoleInput | UserUpdateManyWithWhereWithoutUserRole_User_UserRoleToUserRoleInput[]
+    update?: UserUpdateWithWhereUniqueWithoutUserRoleInput | UserUpdateWithWhereUniqueWithoutUserRoleInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutUserRoleInput | UserUpdateManyWithWhereWithoutUserRoleInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutUserRole_User_UserRoleToUserRoleNestedInput = {
-    create?: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput> | UserCreateWithoutUserRole_User_UserRoleToUserRoleInput[] | UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput | UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput | UserUpsertWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput[]
-    createMany?: UserCreateManyUserRole_User_UserRoleToUserRoleInputEnvelope
+  export type UserUncheckedUpdateManyWithoutUserRoleNestedInput = {
+    create?: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput> | UserCreateWithoutUserRoleInput[] | UserUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserRoleInput | UserCreateOrConnectWithoutUserRoleInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutUserRoleInput | UserUpsertWithWhereUniqueWithoutUserRoleInput[]
+    createMany?: UserCreateManyUserRoleInputEnvelope
     set?: UserWhereUniqueInput | UserWhereUniqueInput[]
     disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
     delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput | UserUpdateWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutUserRole_User_UserRoleToUserRoleInput | UserUpdateManyWithWhereWithoutUserRole_User_UserRoleToUserRoleInput[]
+    update?: UserUpdateWithWhereUniqueWithoutUserRoleInput | UserUpdateWithWhereUniqueWithoutUserRoleInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutUserRoleInput | UserUpdateManyWithWhereWithoutUserRoleInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
@@ -8321,8 +8321,8 @@ export namespace Prisma {
     TaskName: string
     DueDate: Date | string
     IsCompleted: boolean
-    TaskPriority: TaskPriorityCreateNestedOneWithoutTaskInput
     User_Task_UserToUser: UserCreateNestedOneWithoutTask_Task_UserToUserInput
+    TaskPriority: TaskPriorityCreateNestedOneWithoutTaskInput
   }
 
   export type TaskUncheckedCreateWithoutConsultant_Task_ConsultantToConsultantInput = {
@@ -8372,6 +8372,44 @@ export namespace Prisma {
     IsCompleted?: BoolFilter<"Task"> | boolean
   }
 
+  export type UserCreateWithoutTask_Task_UserToUserInput = {
+    Email: string
+    UserName: string
+    UserFirstName: string
+    UserLastName: string
+    Password: string
+    UserRole: UserRoleCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTask_Task_UserToUserInput = {
+    UserID?: number
+    Email: string
+    UserName: string
+    UserFirstName: string
+    UserLastName: string
+    Password: string
+    UserRoleID: number
+  }
+
+  export type UserCreateOrConnectWithoutTask_Task_UserToUserInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
+  }
+
+  export type TaskPriorityCreateWithoutTaskInput = {
+    PriorityTitle: string
+  }
+
+  export type TaskPriorityUncheckedCreateWithoutTaskInput = {
+    PriorityID?: number
+    PriorityTitle: string
+  }
+
+  export type TaskPriorityCreateOrConnectWithoutTaskInput = {
+    where: TaskPriorityWhereUniqueInput
+    create: XOR<TaskPriorityCreateWithoutTaskInput, TaskPriorityUncheckedCreateWithoutTaskInput>
+  }
+
   export type ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput = {
     ConsultantFirstName: string
     ConsultantLastName: string
@@ -8390,42 +8428,54 @@ export namespace Prisma {
     create: XOR<ConsultantCreateWithoutTask_Task_ConsultantToConsultantInput, ConsultantUncheckedCreateWithoutTask_Task_ConsultantToConsultantInput>
   }
 
-  export type TaskPriorityCreateWithoutTaskInput = {
-    PriorityTitle: string
-  }
-
-  export type TaskPriorityUncheckedCreateWithoutTaskInput = {
-    PriorityID?: number
-    PriorityTitle: string
-  }
-
-  export type TaskPriorityCreateOrConnectWithoutTaskInput = {
-    where: TaskPriorityWhereUniqueInput
-    create: XOR<TaskPriorityCreateWithoutTaskInput, TaskPriorityUncheckedCreateWithoutTaskInput>
-  }
-
-  export type UserCreateWithoutTask_Task_UserToUserInput = {
-    Email: string
-    UserName: string
-    UserFirstName: string
-    UserLastName: string
-    Password: string
-    UserRole_User_UserRoleToUserRole: UserRoleCreateNestedOneWithoutUser_User_UserRoleToUserRoleInput
-  }
-
-  export type UserUncheckedCreateWithoutTask_Task_UserToUserInput = {
-    UserID?: number
-    Email: string
-    UserName: string
-    UserFirstName: string
-    UserLastName: string
-    Password: string
-    UserRoleID: number
-  }
-
-  export type UserCreateOrConnectWithoutTask_Task_UserToUserInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutTask_Task_UserToUserInput = {
+    update: XOR<UserUpdateWithoutTask_Task_UserToUserInput, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
     create: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTask_Task_UserToUserInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTask_Task_UserToUserInput, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
+  }
+
+  export type UserUpdateWithoutTask_Task_UserToUserInput = {
+    Email?: StringFieldUpdateOperationsInput | string
+    UserName?: StringFieldUpdateOperationsInput | string
+    UserFirstName?: StringFieldUpdateOperationsInput | string
+    UserLastName?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    UserRole?: UserRoleUpdateOneRequiredWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTask_Task_UserToUserInput = {
+    UserID?: IntFieldUpdateOperationsInput | number
+    Email?: StringFieldUpdateOperationsInput | string
+    UserName?: StringFieldUpdateOperationsInput | string
+    UserFirstName?: StringFieldUpdateOperationsInput | string
+    UserLastName?: StringFieldUpdateOperationsInput | string
+    Password?: StringFieldUpdateOperationsInput | string
+    UserRoleID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TaskPriorityUpsertWithoutTaskInput = {
+    update: XOR<TaskPriorityUpdateWithoutTaskInput, TaskPriorityUncheckedUpdateWithoutTaskInput>
+    create: XOR<TaskPriorityCreateWithoutTaskInput, TaskPriorityUncheckedCreateWithoutTaskInput>
+    where?: TaskPriorityWhereInput
+  }
+
+  export type TaskPriorityUpdateToOneWithWhereWithoutTaskInput = {
+    where?: TaskPriorityWhereInput
+    data: XOR<TaskPriorityUpdateWithoutTaskInput, TaskPriorityUncheckedUpdateWithoutTaskInput>
+  }
+
+  export type TaskPriorityUpdateWithoutTaskInput = {
+    PriorityTitle?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TaskPriorityUncheckedUpdateWithoutTaskInput = {
+    PriorityID?: IntFieldUpdateOperationsInput | number
+    PriorityTitle?: StringFieldUpdateOperationsInput | string
   }
 
   export type ConsultantUpsertWithoutTask_Task_ConsultantToConsultantInput = {
@@ -8452,62 +8502,12 @@ export namespace Prisma {
     ConsultantRole?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TaskPriorityUpsertWithoutTaskInput = {
-    update: XOR<TaskPriorityUpdateWithoutTaskInput, TaskPriorityUncheckedUpdateWithoutTaskInput>
-    create: XOR<TaskPriorityCreateWithoutTaskInput, TaskPriorityUncheckedCreateWithoutTaskInput>
-    where?: TaskPriorityWhereInput
-  }
-
-  export type TaskPriorityUpdateToOneWithWhereWithoutTaskInput = {
-    where?: TaskPriorityWhereInput
-    data: XOR<TaskPriorityUpdateWithoutTaskInput, TaskPriorityUncheckedUpdateWithoutTaskInput>
-  }
-
-  export type TaskPriorityUpdateWithoutTaskInput = {
-    PriorityTitle?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TaskPriorityUncheckedUpdateWithoutTaskInput = {
-    PriorityID?: IntFieldUpdateOperationsInput | number
-    PriorityTitle?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserUpsertWithoutTask_Task_UserToUserInput = {
-    update: XOR<UserUpdateWithoutTask_Task_UserToUserInput, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
-    create: XOR<UserCreateWithoutTask_Task_UserToUserInput, UserUncheckedCreateWithoutTask_Task_UserToUserInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTask_Task_UserToUserInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTask_Task_UserToUserInput, UserUncheckedUpdateWithoutTask_Task_UserToUserInput>
-  }
-
-  export type UserUpdateWithoutTask_Task_UserToUserInput = {
-    Email?: StringFieldUpdateOperationsInput | string
-    UserName?: StringFieldUpdateOperationsInput | string
-    UserFirstName?: StringFieldUpdateOperationsInput | string
-    UserLastName?: StringFieldUpdateOperationsInput | string
-    Password?: StringFieldUpdateOperationsInput | string
-    UserRole_User_UserRoleToUserRole?: UserRoleUpdateOneRequiredWithoutUser_User_UserRoleToUserRoleNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTask_Task_UserToUserInput = {
-    UserID?: IntFieldUpdateOperationsInput | number
-    Email?: StringFieldUpdateOperationsInput | string
-    UserName?: StringFieldUpdateOperationsInput | string
-    UserFirstName?: StringFieldUpdateOperationsInput | string
-    UserLastName?: StringFieldUpdateOperationsInput | string
-    Password?: StringFieldUpdateOperationsInput | string
-    UserRoleID?: IntFieldUpdateOperationsInput | number
-  }
-
   export type TaskCreateWithoutTaskPriorityInput = {
     TaskName: string
     DueDate: Date | string
     IsCompleted: boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
     User_Task_UserToUser: UserCreateNestedOneWithoutTask_Task_UserToUserInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
   }
 
   export type TaskUncheckedCreateWithoutTaskPriorityInput = {
@@ -8548,8 +8548,8 @@ export namespace Prisma {
     TaskName: string
     DueDate: Date | string
     IsCompleted: boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
     TaskPriority: TaskPriorityCreateNestedOneWithoutTaskInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantCreateNestedOneWithoutTask_Task_ConsultantToConsultantInput
   }
 
   export type TaskUncheckedCreateWithoutUser_Task_UserToUserInput = {
@@ -8570,18 +8570,18 @@ export namespace Prisma {
     data: TaskCreateManyUser_Task_UserToUserInput | TaskCreateManyUser_Task_UserToUserInput[]
   }
 
-  export type UserRoleCreateWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleCreateWithoutUserInput = {
     UserRoleName: string
   }
 
-  export type UserRoleUncheckedCreateWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleUncheckedCreateWithoutUserInput = {
     UserRoleID?: number
     UserRoleName: string
   }
 
-  export type UserRoleCreateOrConnectWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleCreateOrConnectWithoutUserInput = {
     where: UserRoleWhereUniqueInput
-    create: XOR<UserRoleCreateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedCreateWithoutUser_User_UserRoleToUserRoleInput>
+    create: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput>
   }
 
   export type TaskUpsertWithWhereUniqueWithoutUser_Task_UserToUserInput = {
@@ -8600,27 +8600,27 @@ export namespace Prisma {
     data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutUser_Task_UserToUserInput>
   }
 
-  export type UserRoleUpsertWithoutUser_User_UserRoleToUserRoleInput = {
-    update: XOR<UserRoleUpdateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedUpdateWithoutUser_User_UserRoleToUserRoleInput>
-    create: XOR<UserRoleCreateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedCreateWithoutUser_User_UserRoleToUserRoleInput>
+  export type UserRoleUpsertWithoutUserInput = {
+    update: XOR<UserRoleUpdateWithoutUserInput, UserRoleUncheckedUpdateWithoutUserInput>
+    create: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput>
     where?: UserRoleWhereInput
   }
 
-  export type UserRoleUpdateToOneWithWhereWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleUpdateToOneWithWhereWithoutUserInput = {
     where?: UserRoleWhereInput
-    data: XOR<UserRoleUpdateWithoutUser_User_UserRoleToUserRoleInput, UserRoleUncheckedUpdateWithoutUser_User_UserRoleToUserRoleInput>
+    data: XOR<UserRoleUpdateWithoutUserInput, UserRoleUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserRoleUpdateWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleUpdateWithoutUserInput = {
     UserRoleName?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserRoleUncheckedUpdateWithoutUser_User_UserRoleToUserRoleInput = {
+  export type UserRoleUncheckedUpdateWithoutUserInput = {
     UserRoleID?: IntFieldUpdateOperationsInput | number
     UserRoleName?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserCreateWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserCreateWithoutUserRoleInput = {
     Email: string
     UserName: string
     UserFirstName: string
@@ -8629,7 +8629,7 @@ export namespace Prisma {
     Task_Task_UserToUser?: TaskCreateNestedManyWithoutUser_Task_UserToUserInput
   }
 
-  export type UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUncheckedCreateWithoutUserRoleInput = {
     UserID?: number
     Email: string
     UserName: string
@@ -8639,29 +8639,29 @@ export namespace Prisma {
     Task_Task_UserToUser?: TaskUncheckedCreateNestedManyWithoutUser_Task_UserToUserInput
   }
 
-  export type UserCreateOrConnectWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserCreateOrConnectWithoutUserRoleInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput>
+    create: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput>
   }
 
-  export type UserCreateManyUserRole_User_UserRoleToUserRoleInputEnvelope = {
-    data: UserCreateManyUserRole_User_UserRoleToUserRoleInput | UserCreateManyUserRole_User_UserRoleToUserRoleInput[]
+  export type UserCreateManyUserRoleInputEnvelope = {
+    data: UserCreateManyUserRoleInput | UserCreateManyUserRoleInput[]
   }
 
-  export type UserUpsertWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUpsertWithWhereUniqueWithoutUserRoleInput = {
     where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedUpdateWithoutUserRole_User_UserRoleToUserRoleInput>
-    create: XOR<UserCreateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedCreateWithoutUserRole_User_UserRoleToUserRoleInput>
+    update: XOR<UserUpdateWithoutUserRoleInput, UserUncheckedUpdateWithoutUserRoleInput>
+    create: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput>
   }
 
-  export type UserUpdateWithWhereUniqueWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUpdateWithWhereUniqueWithoutUserRoleInput = {
     where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutUserRole_User_UserRoleToUserRoleInput, UserUncheckedUpdateWithoutUserRole_User_UserRoleToUserRoleInput>
+    data: XOR<UserUpdateWithoutUserRoleInput, UserUncheckedUpdateWithoutUserRoleInput>
   }
 
-  export type UserUpdateManyWithWhereWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUpdateManyWithWhereWithoutUserRoleInput = {
     where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutUserRole_User_UserRoleToUserRoleInput>
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutUserRoleInput>
   }
 
   export type UserScalarWhereInput = {
@@ -8690,8 +8690,8 @@ export namespace Prisma {
     TaskName?: StringFieldUpdateOperationsInput | string
     DueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     IsCompleted?: BoolFieldUpdateOperationsInput | boolean
-    TaskPriority?: TaskPriorityUpdateOneRequiredWithoutTaskNestedInput
     User_Task_UserToUser?: UserUpdateOneRequiredWithoutTask_Task_UserToUserNestedInput
+    TaskPriority?: TaskPriorityUpdateOneRequiredWithoutTaskNestedInput
   }
 
   export type TaskUncheckedUpdateWithoutConsultant_Task_ConsultantToConsultantInput = {
@@ -8725,8 +8725,8 @@ export namespace Prisma {
     TaskName?: StringFieldUpdateOperationsInput | string
     DueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     IsCompleted?: BoolFieldUpdateOperationsInput | boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
     User_Task_UserToUser?: UserUpdateOneRequiredWithoutTask_Task_UserToUserNestedInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
   }
 
   export type TaskUncheckedUpdateWithoutTaskPriorityInput = {
@@ -8760,8 +8760,8 @@ export namespace Prisma {
     TaskName?: StringFieldUpdateOperationsInput | string
     DueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     IsCompleted?: BoolFieldUpdateOperationsInput | boolean
-    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
     TaskPriority?: TaskPriorityUpdateOneRequiredWithoutTaskNestedInput
+    Consultant_Task_ConsultantToConsultant?: ConsultantUpdateOneWithoutTask_Task_ConsultantToConsultantNestedInput
   }
 
   export type TaskUncheckedUpdateWithoutUser_Task_UserToUserInput = {
@@ -8782,7 +8782,7 @@ export namespace Prisma {
     IsCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type UserCreateManyUserRole_User_UserRoleToUserRoleInput = {
+  export type UserCreateManyUserRoleInput = {
     UserID?: number
     Email: string
     UserName: string
@@ -8791,7 +8791,7 @@ export namespace Prisma {
     Password: string
   }
 
-  export type UserUpdateWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUpdateWithoutUserRoleInput = {
     Email?: StringFieldUpdateOperationsInput | string
     UserName?: StringFieldUpdateOperationsInput | string
     UserFirstName?: StringFieldUpdateOperationsInput | string
@@ -8800,7 +8800,7 @@ export namespace Prisma {
     Task_Task_UserToUser?: TaskUpdateManyWithoutUser_Task_UserToUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUncheckedUpdateWithoutUserRoleInput = {
     UserID?: IntFieldUpdateOperationsInput | number
     Email?: StringFieldUpdateOperationsInput | string
     UserName?: StringFieldUpdateOperationsInput | string
@@ -8810,7 +8810,7 @@ export namespace Prisma {
     Task_Task_UserToUser?: TaskUncheckedUpdateManyWithoutUser_Task_UserToUserNestedInput
   }
 
-  export type UserUncheckedUpdateManyWithoutUserRole_User_UserRoleToUserRoleInput = {
+  export type UserUncheckedUpdateManyWithoutUserRoleInput = {
     UserID?: IntFieldUpdateOperationsInput | number
     Email?: StringFieldUpdateOperationsInput | string
     UserName?: StringFieldUpdateOperationsInput | string

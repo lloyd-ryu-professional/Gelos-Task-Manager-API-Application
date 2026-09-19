@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -17,15 +17,15 @@ model Consultant {
 
 model Task {
   TaskID                                 Int          @id @default(autoincrement())
-  UserID                                   Int
+  UserID                                 Int
   TaskName                               String
   DueDate                                DateTime
-  PriorityID                               Int
-  ConsultantID                             Int?
+  PriorityID                             Int
+  ConsultantID                           Int?
   IsCompleted                            Boolean
-  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [ConsultantID], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
-  TaskPriority                           TaskPriority @relation(fields: [PriorityID], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
   User_Task_UserToUser                   User         @relation("Task_UserToUser", fields: [UserID], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
+  TaskPriority                           TaskPriority @relation(fields: [PriorityID], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
+  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [ConsultantID], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model TaskPriority {
@@ -35,19 +35,19 @@ model TaskPriority {
 }
 
 model User {
-  UserID                           Int      @id @default(autoincrement())
-  Email                            String
-  UserName                         String   @unique(map: "sqlite_autoindex_User_1")
-  UserFirstName                    String
-  UserLastName                     String
-  Password                         String
-  UserRoleID                         Int
-  Task_Task_UserToUser             Task[]   @relation("Task_UserToUser")
-  UserRole_User_UserRoleToUserRole UserRole @relation("User_UserRoleToUserRole", fields: [UserRoleID], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
+  UserID               Int    @id @default(autoincrement())
+  Email                String
+  UserName             String @unique(map: "sqlite_autoindex_User_1")
+  UserFirstName        String
+  UserLastName         String
+  Password             String
+  UserRoleID           Int
+  Task_Task_UserToUser Task[] @relation("Task_UserToUser")
+  UserRole UserRole @relation(fields: [UserRoleID], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model UserRole {
-  UserRoleID                   Int    @id @default(autoincrement())
-  UserRoleName                 String @unique(map: "sqlite_autoindex_UserRole_1")
-  User_User_UserRoleToUserRole User[] @relation("User_UserRoleToUserRole")
+  UserRoleID   Int    @id @default(autoincrement())
+  UserRoleName String @unique(map: "sqlite_autoindex_UserRole_1")
+  User         User[]
 }

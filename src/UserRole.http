@@ -1,0 +1,54 @@
+@baseURL = http://localhost:5000
+
+#DO THIS
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5ODE5ODc4LCJleHAiOjE3ODk4MjcwNzh9.SYQ50gsOF719n99gXomLQOazEcm_KSW2X1U-cp5tBIk
+
+#NOT THIS
+#@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
+
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
+GET {{baseURL}}/user-roles
+Authorization: Bearer {{JWTToken}}
+
+###
+GET {{baseURL}}/user-roles/search?UserRoleName=Admin
+Authorization: Bearer {{JWTToken}}
+
+###
+
+GET {{baseURL}}/user-roles/1
+Authorization: Bearer {{JWTToken}}
+
+###
+
+POST {{baseURL}}/user-roles
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserRoleName": "Master"
+}
+
+###
+
+PUT {{baseURL}}/user-roles/3
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserRoleID": 3,
+  "UserRoleName": "Big Brother"
+}
+
+###
+
+DELETE {{baseURL}}/user-roles/3
+Authorization: Bearer {{JWTToken}}

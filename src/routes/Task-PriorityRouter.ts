@@ -1,24 +1,28 @@
 import "dotenv/config";
-import express from "express";
 import {Router} from "express";
-import {prisma} from "../../prisma/prisma"
 import {auth} from "../middleware/auth"
 import {authorizeRole} from "../middleware/roleAuth"
+import {Prisma} from "@prisma/client";
+import {prismaConfig} from "../../prisma/prisma"
 
 const router = Router();
 
-router.get("/", auth, authorizeRole("User", "Admin"), async ( res: express.Response) => {
+// router.get("/", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
+
+router.get("/", auth, authorizeRole(1, 2), async (req, res) => {
     try {
-        const TaskPriority = await prisma.taskPriority.findMany();
+        const TaskPriority = await prismaConfig.taskPriority.findMany();
         res.status(200).json(TaskPriority);
     } catch (error: any) {
         res.status(500).json({message: `Error fetching task priorities: ${error.message}`})
     }
 });
 
-router.get("/search",auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
+router.get("/search", auth, authorizeRole(1, 2), async (req, res) => {
     try {
         const {PriorityTitle} = req.query;
+
+        const searchQuery = typeof PriorityTitle === "string" ? PriorityTitle : '';
 
         /* string validation for priority title */
         if (!PriorityTitle || typeof PriorityTitle !== "string") {
@@ -26,10 +30,10 @@ router.get("/search",auth, authorizeRole("User", "Admin"), async (req: express.R
             return;
         }
 
-        const TaskPriorities = await prisma.taskPriority.findMany({
+        const TaskPriorities = await prismaConfig.taskPriority.findMany({
             where: {
                 PriorityTitle: {
-                    contains: PriorityTitle,
+                    contains: searchQuery,
                 },
             },
         });
@@ -39,10 +43,10 @@ router.get("/search",auth, authorizeRole("User", "Admin"), async (req: express.R
     }
 })
 
-router.get("/:id", auth, authorizeRole("User", "Admin"),async (req: express.Request, res: express.Response) => {
+router.get("/:id", auth, authorizeRole(1, 2), async (req, res) => {
     try {
         const {id} = req.params;
-        const taskPriorities = await prisma.taskPriority.findUnique({
+        const taskPriorities = await prismaConfig.taskPriority.findUnique({
             where: {
                 PriorityID: Number(id)
             },
@@ -57,13 +61,11 @@ router.get("/:id", auth, authorizeRole("User", "Admin"),async (req: express.Requ
     } catch (error: any) {
         res.status(500).json({message: `Error fetching task priority: ${error.message}`})
     }
-});
-
-
-router.post("/", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
+})
+router.post("/", auth, authorizeRole(1, 2), async (req, res) => {
     try {
         const {PriorityID, PriorityTitle, Task} = req.body;
-        const newTaskPriority = await prisma.taskPriority.create({
+        const newTaskPriority = await prismaConfig.taskPriority.create({
             data: {
                 PriorityID,
                 PriorityTitle: PriorityTitle,
@@ -72,16 +74,26 @@ router.post("/", auth, authorizeRole("User", "Admin"), async (req: express.Reque
         });
         res.status(200).json(newTaskPriority);
     } catch (error: any) {
-        res.status(400).json({message: `Error creating task priority: ${error.message}`})
+
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            if (error.code === 'P2002') {
+                return res.status(409).json({
+                    message: `A task priority with the title '${req.body.PriorityTitle}' already exists.`
+                });
+            }
+        }
+        // Fallback for other errors
+        return res.status(500).json({message: "Internal server error", error: error.message});
     }
+    // res.status(400).json({message: `Error creating task priority: ${error.message}`})
 })
 
-router.put("/:id", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
+router.put("/:id", auth, authorizeRole(1, 2), async (req, res) => {
     try {
         const {id} = req.params;
         const {PriorityTitle} = req.body;
 
-        const updatedTaskPriority = await prisma.taskPriority.update({
+        const updatedTaskPriority = await prismaConfig.taskPriority.update({
             where: {
                 PriorityID: Number(id),
             },
@@ -94,14 +106,26 @@ router.put("/:id", auth, authorizeRole("User", "Admin"), async (req: express.Req
         }
         res.status(200).json(updatedTaskPriority);
     } catch (error: any) {
-        res.status(400).json({message: `Error updating task priority: ${error.message}`})
+        // res.status(400).json({message: `Error updating task priority: ${error.message}`})
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            if (error.code === 'P2002') {
+                return res.status(409).json({
+                    message: `A task priority with the title '${req.body.PriorityTitle}' already exists.`
+                });
+            }
+            if (error.code === 'P2025') {
+                return res.status(409).json({
+                    message: `No record was found for  '${req.body.PriorityTitle}' to update.`
+                })
+            }
+        }
     }
 })
 
-router.delete("/:id", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
+router.delete("/:id", auth, authorizeRole(1, 2), async (req, res) => {
     try {
         const {id} = req.params;
-        const deletedTaskPriority = await prisma.taskPriority.delete({
+        const deletedTaskPriority = await prismaConfig.taskPriority.delete({
             where: {
                 PriorityID: Number(id),
             },

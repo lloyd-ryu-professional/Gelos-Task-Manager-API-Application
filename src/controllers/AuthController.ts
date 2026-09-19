@@ -18,7 +18,7 @@ export const Login = async (req: express.Request, res: express.Response) => {
         const user: User | null = await prismaConfig.user.findUnique({
             where: { UserName: username },
             include: {
-                UserRole_User_UserRoleToUserRole: true
+                UserRole: true
             }
         });
 

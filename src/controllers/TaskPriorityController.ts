@@ -1,24 +1,17 @@
 import "dotenv/config";
-import {Router} from "express";
-import {auth} from "../middleware/auth"
-import {authorizeRole} from "../middleware/roleAuth"
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
 
-const router = Router();
-
-// router.get("/", auth, authorizeRole("User", "Admin"), async (req: express.Request, res: express.Response) => {
-
-router.get("/", auth, authorizeRole(1, 2), async (req, res) => {
+export const GetTaskPriorities = async (req: any, res: any) => {
     try {
         const TaskPriority = await prismaConfig.taskPriority.findMany();
         res.status(200).json(TaskPriority);
     } catch (error: any) {
         res.status(500).json({message: `Error fetching task priorities: ${error.message}`})
     }
-});
 
-router.get("/search", auth, authorizeRole(1, 2), async (req, res) => {
+};
+export const GetTaskPriorityTitle = async (req: any, res: any) => {
     try {
         const {PriorityTitle} = req.query;
 
@@ -41,9 +34,10 @@ router.get("/search", auth, authorizeRole(1, 2), async (req, res) => {
     } catch (error: any) {
         res.status(500).json({message: `Error fetching task priorities search: ${error.message}`})
     }
-})
+};
 
-router.get("/:id", auth, authorizeRole(1, 2), async (req, res) => {
+
+export const GetTaskPriorityID = async (req: any, res: any) => {
     try {
         const {id} = req.params;
         const taskPriorities = await prismaConfig.taskPriority.findUnique({
@@ -61,8 +55,9 @@ router.get("/:id", auth, authorizeRole(1, 2), async (req, res) => {
     } catch (error: any) {
         res.status(500).json({message: `Error fetching task priority: ${error.message}`})
     }
-})
-router.post("/", auth, authorizeRole(1, 2), async (req, res) => {
+};
+
+export const CreateTaskPriority = async (req: any, res: any) => {
     try {
         const {PriorityID, PriorityTitle, Task} = req.body;
         const newTaskPriority = await prismaConfig.taskPriority.create({
@@ -86,9 +81,9 @@ router.post("/", auth, authorizeRole(1, 2), async (req, res) => {
         return res.status(500).json({message: "Internal server error", error: error.message});
     }
     // res.status(400).json({message: `Error creating task priority: ${error.message}`})
-})
+};
 
-router.put("/:id", auth, authorizeRole(1, 2), async (req, res) => {
+export const UpdateTaskPriority = async (req: any, res: any) => {
     try {
         const {id} = req.params;
         const {PriorityTitle} = req.body;
@@ -120,9 +115,9 @@ router.put("/:id", auth, authorizeRole(1, 2), async (req, res) => {
             }
         }
     }
-})
+};
 
-router.delete("/:id", auth, authorizeRole(1, 2), async (req, res) => {
+export const DeleteTaskPriority = async (req: any, res: any) => {
     try {
         const {id} = req.params;
         const deletedTaskPriority = await prismaConfig.taskPriority.delete({
@@ -138,6 +133,6 @@ router.delete("/:id", auth, authorizeRole(1, 2), async (req, res) => {
         (error: any) {
         res.status(400).json({message: `Error delete task priority: ${error.message}`})
     }
-})
+};
 
-export default router;
+// export default router;

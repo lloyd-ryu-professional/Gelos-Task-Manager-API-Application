@@ -1,7 +1,7 @@
 @baseURL = http://localhost:5000
 
 #DO THIS
-@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk4NDg0LCJleHAiOjE3ODk4MDU2ODR9.DufPdO_VucVg504wLePRGHJrgehO0TMqQkAMoDvAMJI
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5ODAxOTQ5LCJleHAiOjE3ODk4MDkxNDl9.g53bV1xfdR1H8haTBzd7LedbroLGDTg--SpnznsRJBY
 
 #NOT THIS
 #@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
@@ -39,7 +39,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{baseURL}}/task-priorities/5
+PUT {{baseURL}}/task-priorities/4
 Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
@@ -50,5 +50,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseURL}}/task-priorities/6
+DELETE {{baseURL}}/task-priorities/4
 Authorization: Bearer {{JWTToken}}

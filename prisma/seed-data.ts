@@ -2,7 +2,7 @@ import sqlite3 from "better-sqlite3";
 import {PrismaClient} from "@prisma/client";
 import {PrismaBetterSqlite3} from "@prisma/adapter-better-sqlite3";
 import "dotenv/config";
-import {prisma} from "./prisma.js";
+import {prismaConfig} from "./prisma.js";
 import bcrypt from "bcryptjs";
 
 const consultantData: string[] = [
@@ -123,13 +123,13 @@ const consultantsConversion = consultantData.map((entry) => {
 });
 
 async function consultantSeed() {
-    await prisma.consultant.createMany({
+    await prismaConfig.consultant.createMany({
         data: consultantsConversion,
     });
 }
 
 async function taskPrioritySeed() {
-    await prisma.taskPriority.createMany({
+    await prismaConfig.taskPriority.createMany({
         data: [
             {PriorityID: 1, PriorityTitle: "Low"},
             {PriorityID: 2, PriorityTitle: "Medium"},
@@ -139,7 +139,7 @@ async function taskPrioritySeed() {
 }
 
 async function userRoleSeed() {
-    await prisma.userRole.createMany({
+    await prismaConfig.userRole.createMany({
         data: [
             {UserRoleID: 1, UserRoleName: "User"},
             {UserRoleID: 2, UserRoleName: "Admin"},
@@ -148,7 +148,7 @@ async function userRoleSeed() {
 }
 
 async function userSeed() {
-    await prisma.user.createMany({
+    await prismaConfig.user.createMany({
         data: [
             {
                 UserID: 1,
@@ -173,7 +173,7 @@ async function userSeed() {
 }
 
 async function taskSeed() {
-    await prisma.task.createMany({
+    await prismaConfig.task.createMany({
         data: [
             {TaskID: 1, UserID: 1, TaskName: "task 1", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
             {TaskID: 2, UserID: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
@@ -183,17 +183,17 @@ async function taskSeed() {
 }
 
 async function main() {
-    await prisma.task.deleteMany({});
-    await prisma.consultant.deleteMany({});
-    await prisma.taskPriority.deleteMany({});
-    await prisma.user.deleteMany({});
-    await prisma.userRole.deleteMany({});
+    await prismaConfig.task.deleteMany({});
+    await prismaConfig.consultant.deleteMany({});
+    await prismaConfig.taskPriority.deleteMany({});
+    await prismaConfig.user.deleteMany({});
+    await prismaConfig.userRole.deleteMany({});
 
-    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Task';`);
-    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Consultant';`);
-    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='TaskPriority';`);
-    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='User';`);
-    await prisma.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='UserRole';`);
+    await prismaConfig.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Task';`);
+    await prismaConfig.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='Consultant';`);
+    await prismaConfig.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='TaskPriority';`);
+    await prismaConfig.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='User';`);
+    await prismaConfig.$executeRawUnsafe(`DELETE FROM sqlite_sequence WHERE name='UserRole';`);
 
     console.log("Deleted seed data and reset autoincrement");
 
@@ -208,4 +208,4 @@ async function main() {
 
 main()
     .catch((e) => console.error(e))
-    .finally(async () => prisma.$disconnect());
+    .finally(async () => prismaConfig.$disconnect());

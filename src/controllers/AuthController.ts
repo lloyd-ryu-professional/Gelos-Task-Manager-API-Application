@@ -1,14 +1,13 @@
 import "dotenv/config";
 import express from "express";
-import { Router } from "express";
 import { User } from "@prisma/client";
 import { prismaConfig } from "../../prisma/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const router = Router();
 
-router.post("/login", async (req: express.Request, res: express.Response) => {
+export const Login = async (req: express.Request, res: express.Response) => {
+
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -58,16 +57,14 @@ router.post("/login", async (req: express.Request, res: express.Response) => {
         console.error("Login error:", error);
         res.status(500).json({ message: "Server error" });
     }
-});
+};
 
-router.post("/logout", async (req: express.Request, res: express.Response) => {
+export const Logout = async (req: express.Request, res: express.Response) => {
+
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
         return res.status(400).json({ message: "No token provided" });
     }
-
     res.status(200).json({ message: "Logout Successful" });
-});
-
-export default router;
+};

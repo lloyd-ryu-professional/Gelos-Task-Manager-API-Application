@@ -1,7 +1,6 @@
 import express from 'express';
-import sqlite3 from 'better-sqlite3';
-import taskPriorityRoutes from "./routes/Task-PriorityRouter"
-import authRoutes from "./routes/authRoutes"
+import taskPriorityRoutes from "../src/routes/TaskPriorityRoutes"
+import authRoutes from "../src/routes/AuthRoutes"
 const app = express();
 
 app.use(express.json());

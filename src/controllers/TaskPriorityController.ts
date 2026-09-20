@@ -64,7 +64,9 @@ export const CreateTaskPriority = async (req: any, res: any) => {
             data: {
                 PriorityID,
                 PriorityTitle: PriorityTitle,
-                Task: Task,
+                Task: {
+                    connect: Task
+                }
             },
         });
         res.status(200).json(newTaskPriority);

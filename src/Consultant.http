@@ -1,0 +1,66 @@
+@baseURL = http://localhost:5000
+
+#DO THIS
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5ODgyNDAzLCJleHAiOjE3ODk4ODk2MDN9.Hja69MFtCRdX3E0T85jY7Yh7Dyy8DmNUOD0b776pO5I
+
+#NOT THIS
+#@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
+
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
+GET {{baseURL}}/consultants
+Authorization: Bearer {{JWTToken}}
+
+###
+GET {{baseURL}}/consultants/search?ConsultantName=Alice
+Authorization: Bearer {{JWTToken}}
+
+###
+
+GET {{baseURL}}/consultants/1
+Authorization: Bearer {{JWTToken}}
+
+###
+
+POST {{baseURL}}/consultants
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "ConsultantFirstName": "Lloyd",
+  "ConsultantLastName": "Ryu",
+  "ConsultantRole" : "ICT Developer"
+}
+
+###
+
+PUT {{baseURL}}/consultants/104
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "ConsultantFirstName": "Lora",
+  "ConsultantLastName": "Ryder",
+  "ConsultantRole" : "Fitness Trainer"
+}
+
+###
+
+PATCH {{baseURL}}/consultants/104
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "ConsultantRole" : "Gym Instructor"
+}
+###
+
+DELETE {{baseURL}}/consultants/104
+Authorization: Bearer {{JWTToken}}

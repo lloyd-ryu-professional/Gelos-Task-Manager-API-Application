@@ -1,6 +1,7 @@
 import express from 'express';
 import taskPriorityRoutes from "../src/routes/TaskPriorityRoutes"
 import userRoleRoutes  from "./routes/UserRoleRoutes";
+import consultantRoutes from "./routes/ConsultantRoutes";
 import authRoutes from "../src/routes/AuthRoutes"
 const app = express();
 
@@ -18,6 +19,7 @@ app.get("/", (req: express.Request, res: express.Response): void => {
 
 app.use("/task-priorities", taskPriorityRoutes)
 app.use("/user-roles", userRoleRoutes)
+app.use("/consultants", consultantRoutes)
 app.use("/auth", authRoutes)
 
 app.listen(PORT, () : void => {

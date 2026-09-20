@@ -8,7 +8,7 @@ export const GetAllConsultants = async (req: any, res: any) => {
         res.status(200).json(Consultant);
 
     } catch (error: any) {
-        res.status(500).json({message: `Error fetching task priorities: ${error.message}`})
+        res.status(500).json({message: `Error fetching consultants: ${error.message}`})
     }
 };
 
@@ -17,7 +17,7 @@ export const GetConsultant = async (req: any, res: any) => {
         const {ConsultantName} = req.query;
 
         if (!ConsultantName || typeof ConsultantName !== "string") {
-            res.status(400).json({message: "A valid PriorityTitle query parameter is required."});
+            res.status(400).json({message: "A valid consultants query parameter is required."});
             return;
         }
 

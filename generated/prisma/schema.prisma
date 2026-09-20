@@ -8,24 +8,24 @@ datasource db {
 }
 
 model Consultant {
-  ConsultantID                     Int    @id @default(autoincrement())
-  ConsultantFirstName              String
-  ConsultantLastName               String
-  ConsultantRole                   String
-  Task_Task_ConsultantToConsultant Task[] @relation("Task_ConsultantToConsultant")
+  ConsultantID        Int    @id @default(autoincrement())
+  ConsultantFirstName String
+  ConsultantLastName  String
+  ConsultantRole      String
+  Task                Task[] @relation("Task_ConsultantToConsultant")
 }
 
 model Task {
-  TaskID                                 Int          @id @default(autoincrement())
-  UserID                                 Int
-  TaskName                               String
-  DueDate                                DateTime
-  PriorityID                             Int
-  ConsultantID                           Int?
-  IsCompleted                            Boolean
-  User_Task_UserToUser                   User         @relation("Task_UserToUser", fields: [UserID], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
-  TaskPriority                           TaskPriority @relation(fields: [PriorityID], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
-  Consultant_Task_ConsultantToConsultant Consultant?  @relation("Task_ConsultantToConsultant", fields: [ConsultantID], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
+  TaskID       Int          @id @default(autoincrement())
+  UserID       Int
+  TaskName     String
+  DueDate      DateTime
+  PriorityID   Int
+  ConsultantID Int?
+  IsCompleted  Boolean
+  User         User         @relation("Task_UserToUser", fields: [UserID], references: [UserID], onDelete: NoAction, onUpdate: NoAction)
+  TaskPriority TaskPriority @relation(fields: [PriorityID], references: [PriorityID], onDelete: NoAction, onUpdate: NoAction)
+  Consultant   Consultant?  @relation("Task_ConsultantToConsultant", fields: [ConsultantID], references: [ConsultantID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model TaskPriority {
@@ -35,15 +35,15 @@ model TaskPriority {
 }
 
 model User {
-  UserID               Int      @id @default(autoincrement())
-  Email                String
-  UserName             String   @unique(map: "sqlite_autoindex_User_1")
-  UserFirstName        String
-  UserLastName         String
-  Password             String
-  UserRoleID           Int
-  Task_Task_UserToUser Task[]   @relation("Task_UserToUser")
-  UserRole             UserRole @relation(fields: [UserRoleID], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
+  UserID        Int      @id @default(autoincrement())
+  Email         String
+  UserName      String   @unique(map: "sqlite_autoindex_User_1")
+  UserFirstName String
+  UserLastName  String
+  Password      String
+  UserRoleID    Int
+  Task          Task[]   @relation("Task_UserToUser")
+  UserRole      UserRole @relation(fields: [UserRoleID], references: [UserRoleID], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model UserRole {

@@ -1,7 +1,7 @@
 @baseURL = http://localhost:5000
 
 #DO THIS
-@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5ODE5NjI0LCJleHAiOjE3ODk4MjY4MjR9.6QQA_33Hee2JFASPRpGv5fkQJ2bO4JCq8yhZMIrhOJA
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5ODc4MjIwLCJleHAiOjE3ODk4ODU0MjB9.Imjx-XVGLcJQ-fMtIpBxDYQZCF7d-_ojHNBgyEq7kMQ
 
 #NOT THIS
 #@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
@@ -44,7 +44,6 @@ Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
-  "PriorityID": 4,
   "PriorityTitle": "Very High"
 }
 

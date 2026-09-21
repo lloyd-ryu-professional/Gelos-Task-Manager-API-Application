@@ -17,9 +17,9 @@ prisma format [options]
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| `--schema` | Path to schema file |
+| Option     | Description                            |
+|------------|----------------------------------------|
+| `--schema` | Path to schema file                    |
 | `--config` | Custom path to your Prisma config file |
 
 ## Examples
@@ -38,11 +38,13 @@ prisma format --schema=./custom/schema.prisma
 
 ## Behavior
 
-`prisma format` modifies the file in place. It is equivalent to "Prettier for Prisma schemas" but also has semantic understanding to fix/add missing schema definitions.
+`prisma format` modifies the file in place. It is equivalent to "Prettier for Prisma schemas" but also has semantic
+understanding to fix/add missing schema definitions.
 
 ## Use in Editor
 
 Most Prisma editor extensions (VS Code, WebStorm) run `prisma format` automatically on save. This command is useful for:
+
 - CI pipelines (check formatting)
 - CLI-based workflows
 - Fixing large schema refactors

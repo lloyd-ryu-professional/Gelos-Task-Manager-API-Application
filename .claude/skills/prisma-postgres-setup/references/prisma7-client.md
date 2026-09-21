@@ -1,6 +1,7 @@
 # Prisma 7 Client Instantiation
 
-Prisma 7 changed how PrismaClient connects to databases. The CLI (`prisma db push`, `prisma migrate`) reads the URL from `prisma.config.ts`. But at **runtime**, you must provide a driver adapter to PrismaClient explicitly.
+Prisma 7 changed how PrismaClient connects to databases. The CLI (`prisma db push`, `prisma migrate`) reads the URL from
+`prisma.config.ts`. But at **runtime**, you must provide a driver adapter to PrismaClient explicitly.
 
 ## Required packages
 
@@ -28,7 +29,8 @@ const prisma = new PrismaClient({ adapter })
 
 1. **Import path**: Always `./generated/prisma/client.js` — not `./generated/prisma` and not `@prisma/client`.
 
-2. **Adapter is mandatory**: `new PrismaClient()` with no arguments throws. `new PrismaClient({ datasourceUrl: '...' })` also throws — `datasourceUrl` does not exist in Prisma 7.
+2. **Adapter is mandatory**: `new PrismaClient()` with no arguments throws. `new PrismaClient({ datasourceUrl: '...' })`
+   also throws — `datasourceUrl` does not exist in Prisma 7.
 
 3. **ESM required**: The generated client uses ESM. Ensure `package.json` has `"type": "module"`.
 
@@ -73,10 +75,10 @@ await pool.end()
 
 ## Common mistakes
 
-| Mistake | Error | Fix |
-|---|---|---|
-| `import { PrismaClient } from './generated/prisma'` | `Cannot find module` | Use `./generated/prisma/client.js` |
-| `new PrismaClient()` | `PrismaClient needs non-empty options` | Pass `{ adapter }` |
-| `new PrismaClient({ datasourceUrl: url })` | `Unknown property datasourceUrl` | Use adapter pattern instead |
-| Missing `"type": "module"` in package.json | ESM import errors | Add `"type": "module"` |
-| `import { PrismaClient } from '@prisma/client'` | Wrong export | Use `./generated/prisma/client.js` |
+| Mistake                                             | Error                                  | Fix                                |
+|-----------------------------------------------------|----------------------------------------|------------------------------------|
+| `import { PrismaClient } from './generated/prisma'` | `Cannot find module`                   | Use `./generated/prisma/client.js` |
+| `new PrismaClient()`                                | `PrismaClient needs non-empty options` | Pass `{ adapter }`                 |
+| `new PrismaClient({ datasourceUrl: url })`          | `Unknown property datasourceUrl`       | Use adapter pattern instead        |
+| Missing `"type": "module"` in package.json          | ESM import errors                      | Add `"type": "module"`             |
+| `import { PrismaClient } from '@prisma/client'`     | Wrong export                           | Use `./generated/prisma/client.js` |

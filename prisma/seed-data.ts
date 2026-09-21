@@ -175,9 +175,33 @@ async function userSeed() {
 async function taskSeed() {
     await prismaConfig.task.createMany({
         data: [
-            {TaskID: 1, UserID: 1, TaskName: "task 1", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
-            {TaskID: 2, UserID: 1, TaskName: "task 2", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
-            {TaskID: 3, UserID: 1, TaskName: "task 3", DueDate: new Date("2026-9-5"), PriorityID: 1, ConsultantID: 1, IsCompleted: false},
+            {
+                TaskID: 1,
+                UserID: 1,
+                TaskName: "task 1",
+                DueDate: new Date("2026-9-5"),
+                PriorityID: 1,
+                ConsultantID: 1,
+                IsCompleted: false
+            },
+            {
+                TaskID: 2,
+                UserID: 1,
+                TaskName: "task 2",
+                DueDate: new Date("2026-9-5"),
+                PriorityID: 1,
+                ConsultantID: 1,
+                IsCompleted: false
+            },
+            {
+                TaskID: 3,
+                UserID: 1,
+                TaskName: "task 3",
+                DueDate: new Date("2026-9-5"),
+                PriorityID: 1,
+                ConsultantID: 1,
+                IsCompleted: false
+            },
         ]
     })
 }

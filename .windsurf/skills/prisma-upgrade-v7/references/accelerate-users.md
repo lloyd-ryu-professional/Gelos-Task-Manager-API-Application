@@ -1,12 +1,14 @@
 # Prisma Accelerate Users
 
-Special migration instructions for users of Prisma Accelerate or Prisma Postgres with `prisma://` or `prisma+postgres://` URLs.
+Special migration instructions for users of Prisma Accelerate or Prisma Postgres with `prisma://` or
+`prisma+postgres://` URLs.
 
 ## Important
 
 **Do NOT pass Accelerate URLs to driver adapters.**
 
-Driver adapters (like `PrismaPg`) expect direct database connection strings. They will fail with `prisma://` or `prisma+postgres://` URLs.
+Driver adapters (like `PrismaPg`) expect direct database connection strings. They will fail with `prisma://` or
+`prisma+postgres://` URLs.
 
 ## Correct v7 Setup for Accelerate
 

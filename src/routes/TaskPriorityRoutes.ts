@@ -9,7 +9,7 @@ import {
     UpdateTaskPriority,
     DeleteTaskPriority
 }
-from '../controllers/TaskPriorityController'
+    from '../controllers/TaskPriorityController'
 
 const router = Router();
 

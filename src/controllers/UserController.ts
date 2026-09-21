@@ -1,7 +1,7 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
-import { Request, Response } from 'express';
+import {Request, Response} from 'express';
 
 export const GetAllUsers = async (req: Request, res: Response) => {
     try {
@@ -103,12 +103,12 @@ export const GetUsersID = async (req: Request, res: Response) => {
                 where: {
                     UserID: Number(id),
                 },
-            include: {
-                UserRole: true
-            },
-            omit: {
-                Password: true,
-            },
+                include: {
+                    UserRole: true
+                },
+                omit: {
+                    Password: true,
+                },
             }
         );
 
@@ -164,7 +164,7 @@ export const UpdateAllUser = async (req: Request, res: Response) => {
         const {UserID, UserName, UserFirstName, UserLastName, Email, Password, UserRoleID, Task} = req.body;
         const updateAllUser = await prismaConfig.user.update({
             where: {
-              UserID: Number(id),
+                UserID: Number(id),
             },
             data: {
                 UserID: UserID,

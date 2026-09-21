@@ -133,11 +133,13 @@ prisma migrate dev
 prisma generate  # Run explicitly if needed
 ```
 
-Local verification with Prisma `7.6.0` showed no generated client files emitted by `migrate dev` or `db push`, even though some CLI help text still says `migrate dev` "trigger[s] generators".
+Local verification with Prisma `7.6.0` showed no generated client files emitted by `migrate dev` or `db push`, even
+though some CLI help text still says `migrate dev` "trigger[s] generators".
 
 ### --skip-seed
 
-Removed from `migrate dev`. More importantly, Prisma v7 no longer auto-runs seeds during `migrate dev` or `migrate reset`, so seed explicitly when you need it.
+Removed from `migrate dev`. More importantly, Prisma v7 no longer auto-runs seeds during `migrate dev` or
+`migrate reset`, so seed explicitly when you need it.
 
 ```bash
 # v6
@@ -160,13 +162,13 @@ prisma db execute --file ./script.sql
 
 ## migrate diff Options
 
-| Removed | Replacement |
-|---------|-------------|
-| `--from-url` | `--from-config-datasource` |
-| `--to-url` | `--to-config-datasource` |
-| `--from-schema-datasource` | `--from-config-datasource` |
-| `--to-schema-datasource` | `--to-config-datasource` |
-| `--shadow-database-url` | Configure in `prisma.config.ts` |
+| Removed                    | Replacement                     |
+|----------------------------|---------------------------------|
+| `--from-url`               | `--from-config-datasource`      |
+| `--to-url`                 | `--to-config-datasource`        |
+| `--from-schema-datasource` | `--from-config-datasource`      |
+| `--to-schema-datasource`   | `--to-config-datasource`        |
+| `--shadow-database-url`    | Configure in `prisma.config.ts` |
 
 ### Example
 

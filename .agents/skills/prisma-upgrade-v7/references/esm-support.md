@@ -1,6 +1,7 @@
 # ESM and CommonJS Support
 
-Prisma ORM v7 is ESM-first, but the `prisma-client` generator can target either ESM or CommonJS. Use ESM by default, and opt into CommonJS with `moduleFormat = "cjs"` if your project still needs it.
+Prisma ORM v7 is ESM-first, but the `prisma-client` generator can target either ESM or CommonJS. Use ESM by default, and
+opt into CommonJS with `moduleFormat = "cjs"` if your project still needs it.
 
 ## ESM Projects
 
@@ -100,24 +101,27 @@ With `moduleResolution: "bundler"`, bare relative imports are usually fine.
 
 | Requirement | Minimum Version |
 |-------------|-----------------|
-| Node.js | 20.19.0 |
-| TypeScript | 5.4.0 |
+| Node.js     | 20.19.0         |
+| TypeScript  | 5.4.0           |
 
 ## Framework Considerations
 
 ### Next.js
 
-Next.js works well with the default ESM output. If you need generated types in client components, import them from `browser`, `models`, or `enums`, not from `client`.
+Next.js works well with the default ESM output. If you need generated types in client components, import them from
+`browser`, `models`, or `enums`, not from `client`.
 
 ### Bun
 
-Bun loads `.env` files automatically, so ESM plus `env()` is the smoothest default. You can still choose `moduleFormat = "cjs"` if the rest of your project requires it.
+Bun loads `.env` files automatically, so ESM plus `env()` is the smoothest default. You can still choose
+`moduleFormat = "cjs"` if the rest of your project requires it.
 
 ## Troubleshooting
 
 ### "ERR_REQUIRE_ESM"
 
-Your generated client is ESM, but your app is requiring it as CommonJS. Either switch the project to ESM or set `moduleFormat = "cjs"` and regenerate.
+Your generated client is ESM, but your app is requiring it as CommonJS. Either switch the project to ESM or set
+`moduleFormat = "cjs"` and regenerate.
 
 ### "Cannot use import statement outside a module"
 

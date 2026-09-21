@@ -21,9 +21,9 @@ prisma migrate status [options]
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| `--schema` | Path to schema file |
+| Option     | Description                            |
+|------------|----------------------------------------|
+| `--schema` | Path to schema file                    |
 | `--config` | Custom path to your Prisma config file |
 
 ## Examples
@@ -35,11 +35,13 @@ prisma migrate status
 ```
 
 Output example (Up to date):
+
 ```
 Database schema is up to date!
 ```
 
 Output example (Pending):
+
 ```
 Following migration have not yet been applied:
   20240115120000_add_user
@@ -62,4 +64,5 @@ To apply migrations in production, run:
 - `0`: Success (may have pending migrations, but command ran successfully)
 - `1`: Error
 
-To check for pending migrations programmatically, you might need to parse the output or use `migrate diff` with exit code flags.
+To check for pending migrations programmatically, you might need to parse the output or use `migrate diff` with exit
+code flags.

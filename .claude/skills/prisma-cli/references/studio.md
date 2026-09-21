@@ -18,12 +18,12 @@ prisma studio [options]
 
 ## Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--port` / `-p` | Port to start Studio on | `5555` |
-| `--browser` / `-b` | Browser to open Studio in | System default |
-| `--config` | Custom path to your Prisma config file | - |
-| `--url` | Database connection string (overrides the one in your Prisma config) | - |
+| Option             | Description                                                          | Default        |
+|--------------------|----------------------------------------------------------------------|----------------|
+| `--port` / `-p`    | Port to start Studio on                                              | `5555`         |
+| `--browser` / `-b` | Browser to open Studio in                                            | System default |
+| `--config`         | Custom path to your Prisma config file                               | -              |
+| `--url`            | Database connection string (overrides the one in your Prisma config) | -              |
 
 ## Examples
 
@@ -93,7 +93,8 @@ Recent Prisma Studio releases added richer editor workflows:
 - back-relation navigation
 - SQL workflows including raw SQL queries
 
-Some recent builds also expose AI-assisted SQL authoring. Treat these as interactive Studio features rather than a replacement for checked-in migrations or application queries.
+Some recent builds also expose AI-assisted SQL authoring. Treat these as interactive Studio features rather than a
+replacement for checked-in migrations or application queries.
 
 ## Use Cases
 
@@ -132,6 +133,7 @@ Some recent builds also expose AI-assisted SQL authoring. Treat these as interac
 ## Security Note
 
 Studio provides direct database access. Only run on:
+
 - Local development machines
 - Secure internal networks
 - Never expose publicly

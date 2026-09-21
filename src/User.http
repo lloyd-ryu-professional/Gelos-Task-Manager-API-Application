@@ -37,7 +37,7 @@ Content-Type: application/json
   "UserFirstName": "Lloyd",
   "UserLastName": "Ryu",
   "Email": "Lord@fakemail.com",
-  "UserName" : "Lord Doctor-48",
+  "UserName": "Lord Doctor-48",
   "Password": "password4849",
   "UserRoleID": 1
 }
@@ -52,7 +52,7 @@ Content-Type: application/json
   "UserFirstName": "Lloyd",
   "UserLastName": "Ryu",
   "Email": "Doc@fakemail.com",
-  "UserName" : "Lord Doctor-48",
+  "UserName": "Lord Doctor-48",
   "Password": "password4849",
   "UserRoleID": 1
 }
@@ -66,6 +66,7 @@ Content-Type: application/json
 {
   "UserRoleID": 2
 }
+
 ###
 
 DELETE {{baseURL}}/users/3

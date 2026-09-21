@@ -16,7 +16,8 @@ will fight the tooling or bypass its safety rails.
 ## v6: `db push` only
 
 MongoDB on v6 has no Prisma Migrate and no plans to add it — "MongoDB projects do not rely
-on internal schemas" ([no support for Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)).
+on internal
+schemas" ([no support for Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)).
 The workflow is `prisma db push` to sync indexes and unique constraints, with no migration
 history on disk.
 
@@ -62,4 +63,5 @@ mirroring how `db push` was used on v6.
 ## References
 
 - [v6: no Prisma Migrate for MongoDB](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)
-- Prisma Next migrations skill (`skills/prisma-next-migrations`) — authoritative for the Next side; verified @ `a2791c5dd59d579b4b3052942ae7f8fe5e2ee852`
+- Prisma Next migrations skill (`skills/prisma-next-migrations`) — authoritative for the Next side; verified @
+  `a2791c5dd59d579b4b3052942ae7f8fe5e2ee852`

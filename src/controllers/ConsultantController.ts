@@ -1,7 +1,7 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
-import { Request, Response } from 'express';
+import {Request, Response} from 'express';
 
 export const GetAllConsultants = async (req: Request, res: Response) => {
     try {

@@ -8,7 +8,8 @@ HIGH
 
 ## Why It Matters
 
-The SDK provides typed endpoint methods and removes boilerplate around auth and refresh handling, which reduces errors in production provisioning flows.
+The SDK provides typed endpoint methods and removes boilerplate around auth and refresh handling, which reduces errors
+in production provisioning flows.
 
 ## Install
 

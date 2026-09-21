@@ -49,11 +49,11 @@ POST /v1/projects
 }
 ```
 
-| Field | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `name` | string | No | Auto-generated | Project display name |
-| `region` | string | No | `us-east-1` | Region for the database |
-| `createDatabase` | boolean | No | `true` | Create a default database with the project |
+| Field            | Type    | Required | Default        | Description                                |
+|------------------|---------|----------|----------------|--------------------------------------------|
+| `name`           | string  | No       | Auto-generated | Project display name                       |
+| `region`         | string  | No       | `us-east-1`    | Region for the database                    |
+| `createDatabase` | boolean | No       | `true`         | Create a default database with the project |
 
 **Response** (with `createDatabase: true`):
 
@@ -110,7 +110,8 @@ Key field to extract:
 
 - `data.database.connections[0].endpoints.direct.connectionString` → use as `DATABASE_URL`
 
-The response also includes `pooled` and `accelerate` endpoints — ignore these for new projects. The direct connection string is all you need.
+The response also includes `pooled` and `accelerate` endpoints — ignore these for new projects. The direct connection
+string is all you need.
 
 If `data.database.status` is `provisioning`, poll `GET /v1/databases/{id}` until `status` is `ready`.
 
@@ -165,9 +166,9 @@ Creates a new named connection string for a database. Use for per-developer or p
 }
 ```
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `name` | string | Yes | Display name for the connection |
+| Field  | Type   | Required | Description                     |
+|--------|--------|----------|---------------------------------|
+| `name` | string | Yes      | Display name for the connection |
 
 **Response:**
 

@@ -26,7 +26,8 @@ Do not print unredacted secrets.
 
 ## `prisma.compute.ts` Not Picked Up
 
-This only matters when the project is supposed to use a config-backed deploy. A simple app without `prisma.compute.ts` can still deploy with explicit `app deploy` flags.
+This only matters when the project is supposed to use a config-backed deploy. A simple app without `prisma.compute.ts`
+can still deploy with explicit `app deploy` flags.
 
 Symptoms:
 
@@ -68,7 +69,8 @@ Fix:
 - pass an existing `apps` key for multi-app deploys, such as `app deploy api`
 - remove config `build` blocks from `nuxt`, `astro`, and `nestjs` targets
 - for `framework: "custom"`, set both `build.outputDirectory` and `build.entrypoint`
-- when `build.outputDirectory` is set for a configurable framework, also set `build.entrypoint` if the framework needs a configured runtime entrypoint
+- when `build.outputDirectory` is set for a configurable framework, also set `build.entrypoint` if the framework needs a
+  configured runtime entrypoint
 
 Minimal recovery config:
 
@@ -96,7 +98,8 @@ If the integrated deploy cannot complete, scaffold succeeds but deploy should be
 
 ## Accidental Prisma Postgres Provisioning
 
-With PostgreSQL, no `--database-url`, and no `--no-prisma-postgres`, setup can provision Prisma Postgres. For local smoke tests, pass:
+With PostgreSQL, no `--database-url`, and no `--no-prisma-postgres`, setup can provision Prisma Postgres. For local
+smoke tests, pass:
 
 ```bash
 --no-prisma-postgres --database-url "postgresql://USER:PASSWORD@HOST:PORT/DB"
@@ -131,9 +134,12 @@ bunx @prisma/cli@latest auth whoami --json
 bunx @prisma/cli@latest project list --json
 ```
 
-For a human terminal, `auth workspace use` with no argument opens an interactive picker or selects the only local OAuth workspace without prompting. In non-interactive or `--json` mode, use `auth workspace use <id-or-name>` instead.
+For a human terminal, `auth workspace use` with no argument opens an interactive picker or selects the only local OAuth
+workspace without prompting. In non-interactive or `--json` mode, use `auth workspace use <id-or-name>` instead.
 
-If the active workspace was logged out or its token refresh failed, the CLI intentionally stays signed out for OAuth commands rather than falling through to another cached workspace. Recover by running `auth workspace list --json` and then `auth workspace use <workspace-id>`.
+If the active workspace was logged out or its token refresh failed, the CLI intentionally stays signed out for OAuth
+commands rather than falling through to another cached workspace. Recover by running `auth workspace list --json` and
+then `auth workspace use <workspace-id>`.
 
 To remove only one local OAuth workspace session:
 
@@ -153,9 +159,12 @@ bunx @prisma/cli@latest auth whoami
 bunx @prisma/cli@latest app deploy --json --no-interactive --prod --yes --env .env
 ```
 
-If `PRISMA_SERVICE_TOKEN` is set and non-empty, it is the active auth source and local OAuth workspace switching is unavailable for command execution. Unset `PRISMA_SERVICE_TOKEN` before using `auth workspace use` to change local OAuth workspace context.
+If `PRISMA_SERVICE_TOKEN` is set and non-empty, it is the active auth source and local OAuth workspace switching is
+unavailable for command execution. Unset `PRISMA_SERVICE_TOKEN` before using `auth workspace use` to change local OAuth
+workspace context.
 
-If `PRISMA_SERVICE_TOKEN` is set but empty, the CLI errors before trying browser-login credentials. Unset it or provide a valid workspace service token. Never echo, log, or paste the token value; only check whether it is present.
+If `PRISMA_SERVICE_TOKEN` is set but empty, the CLI errors before trying browser-login credentials. Unset it or provide
+a valid workspace service token. Never echo, log, or paste the token value; only check whether it is present.
 
 Local storage hints for debugging:
 
@@ -182,7 +191,8 @@ bunx @prisma/cli@latest app deploy --project <id-or-name> --json --no-interactiv
 bunx @prisma/cli@latest app deploy --create-project <name> --yes
 ```
 
-Do not rely on `--yes` alone to choose Project scope. `--project`, `--create-project`, and `PRISMA_PROJECT_ID` are mutually exclusive.
+Do not rely on `--yes` alone to choose Project scope. `--project`, `--create-project`, and `PRISMA_PROJECT_ID` are
+mutually exclusive.
 
 ## Missing or Placeholder `DATABASE_URL`
 
@@ -235,7 +245,8 @@ Fix:
 - capture the deployment id and URL from deploy JSON, then inspect logs with `app logs --deployment <deployment-id>`
 - `app show`, `app list-deploys`, and `app logs` do not filter by branch; capture and use the deployment id
 - treat `app promote <deployment-id>` as a production action because it rebuilds with production env vars
-- do not expect `prisma.compute.ts` to select Project, Branch, production, or database scope; it only supplies app deploy defaults
+- do not expect `prisma.compute.ts` to select Project, Branch, production, or database scope; it only supplies app
+  deploy defaults
 
 ## Database Wiring or Schema Did Not Apply
 
@@ -250,7 +261,8 @@ Fix:
 - read [`app-deploy-cli.md`](app-deploy-cli.md) `Database and Env` for the database/env guardrails
 - create and assign database env vars explicitly for the intended branch/app scope
 - run migrations, seed, or schema push yourself after database setup; Compute never applies schema changes for you
-- for multi-app deploy-all with app-specific database isolation, create and assign those database env vars explicitly before deploy
+- for multi-app deploy-all with app-specific database isolation, create and assign those database env vars explicitly
+  before deploy
 
 ## Next.js Standalone Missing
 
@@ -295,7 +307,9 @@ For TanStack Start specifically:
 - run `bun run build` and verify `.output/server/index.mjs` exists
 - do not replace the production server with `vite preview`
 
-Compute detection selects TanStack Start when it sees `@tanstack/react-start` or `@tanstack/solid-start`. If the Nitro entrypoint is missing after that, fix the TanStack/Nitro build output; do not assume Compute will silently use a Bun deployment.
+Compute detection selects TanStack Start when it sees `@tanstack/react-start` or `@tanstack/solid-start`. If the Nitro
+entrypoint is missing after that, fix the TanStack/Nitro build output; do not assume Compute will silently use a Bun
+deployment.
 
 ## Bun Entrypoint Missing
 
@@ -333,7 +347,8 @@ Fix:
 - read `process.env.PORT`
 - pass `--http-port <port>` when the app has a fixed port
 - use the generated `compute:deploy` script when it exists
-- remember the `@prisma/cli app deploy` default is HTTP `3000`; generated Hono/Elysia projects usually configure `8080` through `prisma.compute.ts` or flag-backed `--http-port 8080` scripts
+- remember the `@prisma/cli app deploy` default is HTTP `3000`; generated Hono/Elysia projects usually configure `8080`
+  through `prisma.compute.ts` or flag-backed `--http-port 8080` scripts
 - use the template defaults: Hono/Elysia `8080`, Next/TanStack/Nuxt `3000`, Astro `4321`
 
 ## Public URL Smoke Test Fails
@@ -368,7 +383,9 @@ Symptoms:
 
 Why this happens:
 
-Compute's boot watcher polls `/proc/net/tcp` and `/proc/net/tcp6` for configured ports entering `LISTEN`. That readiness signal tracks the port, not whether the app bound `127.0.0.1` or all interfaces. A loopback-only listener can therefore look ready while public ingress still cannot reach it.
+Compute's boot watcher polls `/proc/net/tcp` and `/proc/net/tcp6` for configured ports entering `LISTEN`. That readiness
+signal tracks the port, not whether the app bound `127.0.0.1` or all interfaces. A loopback-only listener can therefore
+look ready while public ingress still cannot reach it.
 
 Fix:
 
@@ -379,7 +396,8 @@ Fix:
 
 ## Env Changes Did Not Apply
 
-Generated `compute:deploy` scripts redeploy using the generated flags and/or `prisma.compute.ts`; they do not run migrations or seed data.
+Generated `compute:deploy` scripts redeploy using the generated flags and/or `prisma.compute.ts`; they do not run
+migrations or seed data.
 
 After env changes:
 
@@ -420,16 +438,19 @@ bunx @prisma/cli@latest build logs <build-id> --follow
 bunx @prisma/cli@latest build logs <build-id> --json
 ```
 
-Use `build logs` for build output keyed by a Build id from a GitHub check run, Console build page, or Management API build record. Use `app logs` for runtime logs keyed by the current app deployment or a deployment id.
+Use `build logs` for build output keyed by a Build id from a GitHub check run, Console build page, or Management API
+build record. Use `app logs` for runtime logs keyed by the current app deployment or a deployment id.
 
 Summarize relevant errors. Do not paste secrets.
 
 ## Report Unresolved CLI Issues
 
-When a CLI failure survives the checks above, or a command crashes with `UNEXPECTED_ERROR`, report it to the Prisma team:
+When a CLI failure survives the checks above, or a command crashes with `UNEXPECTED_ERROR`, report it to the Prisma
+team:
 
 ```bash
 bunx @prisma/cli@latest feedback "app deploy crashed: <first error line>"
 ```
 
-Prefer the pre-filled command from a `--json` crash envelope's `nextActions` verbatim. Anonymous; never put secrets, connection URLs, or tokens in the message.
+Prefer the pre-filled command from a `--json` crash envelope's `nextActions` verbatim. Anonymous; never put secrets,
+connection URLs, or tokens in the message.

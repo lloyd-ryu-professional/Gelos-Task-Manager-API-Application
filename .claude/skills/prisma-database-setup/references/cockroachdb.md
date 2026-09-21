@@ -44,7 +44,8 @@ In `.env`:
 DATABASE_URL="postgresql://user:password@host:26257/db?sslmode=verify-full"
 ```
 
-Note: CockroachDB uses the PostgreSQL wire protocol, so the URL often looks like postgresql, but the provider **MUST** be `cockroachdb` in the schema to handle specific CRDB features correctly.
+Note: CockroachDB uses the PostgreSQL wire protocol, so the URL often looks like postgresql, but the provider **MUST**
+be `cockroachdb` in the schema to handle specific CRDB features correctly.
 
 ## Driver Adapter
 
@@ -86,4 +87,5 @@ model User {
 ## Common Issues
 
 ### Schema Introspection
+
 Always use `provider = "cockroachdb"` to ensure correct type mapping during `db pull`.

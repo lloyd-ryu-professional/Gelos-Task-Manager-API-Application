@@ -15,6 +15,7 @@ prisma init --db
 ```
 
 This will:
+
 1. Log you into Prisma Data Platform.
 2. Create a new project and database instance.
 3. Update your `.env` with the connection string.
@@ -23,7 +24,8 @@ This will:
 
 For Prisma CLI flows and Accelerate-style usage, you may see a `prisma+postgres://` URL.
 
-For Prisma Client with a driver adapter in Node.js, prefer the direct TCP connection string from the Prisma Postgres dashboard:
+For Prisma Client with a driver adapter in Node.js, prefer the direct TCP connection string from the Prisma Postgres
+dashboard:
 
 ```env
 DATABASE_URL="postgres://identifier:key@db.prisma.io:5432/postgres?sslmode=require"
@@ -100,7 +102,8 @@ const adapter = new PrismaPg(process.env.DATABASE_URL!, {
 
 ### Edge/serverless option
 
-Use the Prisma Postgres serverless driver only when you need HTTP/WebSocket transport in environments like Workers or Edge Functions:
+Use the Prisma Postgres serverless driver only when you need HTTP/WebSocket transport in environments like Workers or
+Edge Functions:
 
 ```bash
 npm install @prisma/adapter-ppg @prisma/ppg
@@ -117,7 +120,8 @@ const prisma = new PrismaClient({
 })
 ```
 
-This serverless driver is the specialized path for HTTP/WebSocket-based edge and serverless runtimes, not the default recommendation for standard Node.js apps.
+This serverless driver is the specialized path for HTTP/WebSocket-based edge and serverless runtimes, not the default
+recommendation for standard Node.js apps.
 
 ## Features
 

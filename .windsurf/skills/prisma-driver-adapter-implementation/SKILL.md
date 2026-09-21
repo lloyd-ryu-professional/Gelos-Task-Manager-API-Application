@@ -228,7 +228,8 @@ class MyQueryable<TClient> implements SqlQueryable {
 
 ### Step 2: Create the Transaction class
 
-**Critical**: `commit()` and `rollback()` are **lifecycle hooks only**. They must NOT issue SQL. Prisma sends `COMMIT`/`ROLLBACK` via `executeRaw` on the transaction object.
+**Critical**: `commit()` and `rollback()` are **lifecycle hooks only**. They must NOT issue SQL. Prisma sends `COMMIT`/
+`ROLLBACK` via `executeRaw` on the transaction object.
 
 ```typescript
 class MyTransaction extends MyQueryable<TClient> implements Transaction {

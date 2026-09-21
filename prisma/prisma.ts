@@ -1,7 +1,7 @@
 import "dotenv/config";
-import { defineConfig } from "prisma/config";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "../generated/prisma/client";
+import {defineConfig} from "prisma/config";
+import {PrismaBetterSqlite3} from "@prisma/adapter-better-sqlite3";
+import {PrismaClient} from "../generated/prisma/client";
 
 export default defineConfig({
     schema: "prisma/schema.prisma",
@@ -15,10 +15,10 @@ export default defineConfig({
 
 const connectionString = `${process.env.DATABASE_URL}`;
 
-const adapter = new PrismaBetterSqlite3({ url: connectionString });
+const adapter = new PrismaBetterSqlite3({url: connectionString});
 
-const prismaConfig = new PrismaClient({ adapter });
-export { prismaConfig };
+const prismaConfig = new PrismaClient({adapter});
+export {prismaConfig};
 
 // dotenv.config();
 //

@@ -50,7 +50,8 @@ DATABASE_URL="file:./dev.db"
 file:PATH
 ```
 
-- **PATH**: Relative path to the database file. Check `prisma.config.ts` if you need to confirm how your app resolves it.
+- **PATH**: Relative path to the database file. Check `prisma.config.ts` if you need to confirm how your app resolves
+  it.
 
 ## Driver Adapter
 
@@ -103,4 +104,6 @@ For edge compatibility or Turso:
 ## Common Issues
 
 ### "Database file not found"
-Ensure the path in `DATABASE_URL` is correct relative to where Prisma is running or the schema file. `file:./dev.db` creates it next to schema.
+
+Ensure the path in `DATABASE_URL` is correct relative to where Prisma is running or the schema file. `file:./dev.db`
+creates it next to schema.

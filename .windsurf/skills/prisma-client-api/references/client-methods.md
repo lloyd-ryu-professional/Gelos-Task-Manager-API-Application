@@ -16,6 +16,7 @@ await prisma.$connect()
 ### When to use
 
 Usually not needed - Prisma connects automatically on first query. Use for:
+
 - Fail fast on startup
 - Health checks
 - Pre-warming connections
@@ -220,4 +221,5 @@ const user = await prisma.user.findUnique({
 })
 ```
 
-With the `prisma-client` generator, use TypeScript `satisfies` for typed query fragments. You may still see older examples that use `Prisma.validator()` with `prisma-client-js`.
+With the `prisma-client` generator, use TypeScript `satisfies` for typed query fragments. You may still see older
+examples that use `Prisma.validator()` with `prisma-client-js`.

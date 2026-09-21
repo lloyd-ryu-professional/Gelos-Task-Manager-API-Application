@@ -86,7 +86,8 @@ Use a driver adapter for the standard SQL workflow.
 
 ### Text protocol option
 
-If you need the MariaDB driver's text protocol instead of the default binary `execute()` path, enable `useTextProtocol` explicitly:
+If you need the MariaDB driver's text protocol instead of the default binary `execute()` path, enable `useTextProtocol`
+explicitly:
 
 ```typescript
 import { PrismaClient } from '../generated/client'
@@ -117,10 +118,14 @@ datasource db {
 ## Common Issues
 
 ### "Too many connections"
+
 MySQL has a connection limit. Adjust connection pool size in URL:
+
 ```env
 DATABASE_URL="mysql://...?connection_limit=5"
 ```
 
 ### JSON Support
-MySQL 5.7+ supports JSON. MariaDB 10.2+ supports JSON (as an alias for LONGTEXT with check constraints). Prisma handles this, but verify your version.
+
+MySQL 5.7+ supports JSON. MariaDB 10.2+ supports JSON (as an alias for LONGTEXT with check constraints). Prisma handles
+this, but verify your version.

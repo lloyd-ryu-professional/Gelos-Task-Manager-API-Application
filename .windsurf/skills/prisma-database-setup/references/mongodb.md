@@ -1,6 +1,7 @@
 # MongoDB Setup
 
-MongoDB projects should stay on the latest Prisma 6.x release. Do not upgrade a MongoDB app to Prisma 7's SQL client path.
+MongoDB projects should stay on the latest Prisma 6.x release. Do not upgrade a MongoDB app to Prisma 7's SQL client
+path.
 
 ## Prerequisites
 
@@ -33,7 +34,8 @@ Do **not** apply the Prisma 7 SQL adapter setup here. MongoDB does not use a SQL
 
 ### ID Field Requirement
 
-MongoDB models **must** have a mapped `_id` field using `@id` and `@map("_id")`, usually of type `String` with `auto()` and `db.ObjectId`.
+MongoDB models **must** have a mapped `_id` field using `@id` and `@map("_id")`, usually of type `String` with `auto()`
+and `db.ObjectId`.
 
 ```prisma
 model User {
@@ -73,8 +75,10 @@ DATABASE_URL="mongodb+srv://user:password@cluster.mongodb.net/mydb?retryWrites=t
 
 - `prisma init --datasource-provider mongodb` is still implemented in Prisma's CLI source.
 - Prisma's upstream repo still contains MongoDB fixtures and tests.
-- Local verification shows Prisma 7 can still recognize MongoDB inputs, but the generated client path does not provide a supported MongoDB upgrade path.
-- Local verification shows Prisma 6.x works end to end with `prisma-client-js`, `prisma db push`, and `new PrismaClient()` against a MongoDB replica set.
+- Local verification shows Prisma 7 can still recognize MongoDB inputs, but the generated client path does not provide a
+  supported MongoDB upgrade path.
+- Local verification shows Prisma 6.x works end to end with `prisma-client-js`, `prisma db push`, and
+  `new PrismaClient()` against a MongoDB replica set.
 
 ## Version Guidance
 
@@ -84,7 +88,10 @@ DATABASE_URL="mongodb+srv://user:password@cluster.mongodb.net/mydb?retryWrites=t
 ## Common Issues
 
 ### "Transactions not supported"
-Ensure your MongoDB instance is a **Replica Set**. Standalone instances do not support transactions. Atlas clusters are replica sets by default.
+
+Ensure your MongoDB instance is a **Replica Set**. Standalone instances do not support transactions. Atlas clusters are
+replica sets by default.
 
 ### "Invalid ObjectID"
+
 Ensure fields referencing IDs are decorated with `@db.ObjectId` if the target is an ObjectID.

@@ -17,15 +17,16 @@ prisma db execute [options]
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| `--file` | Path to a file containing the script to execute |
-| `--stdin` | Use terminal standard input as the script |
-| `--config` | Custom path to your Prisma config file |
+| Option     | Description                                     |
+|------------|-------------------------------------------------|
+| `--file`   | Path to a file containing the script to execute |
+| `--stdin`  | Use terminal standard input as the script       |
+| `--config` | Custom path to your Prisma config file          |
 
 ## Current Option Surface
 
-`prisma db execute` uses the datasource configured in `prisma.config.ts`. Use `--config` if you need a separate config file for another environment.
+`prisma db execute` uses the datasource configured in `prisma.config.ts`. Use `--config` if you need a separate config
+file for another environment.
 
 ## Examples
 
@@ -74,5 +75,6 @@ export default defineConfig({
 
 ## Limitations
 
-- **No Data Return**: The command reports success/failure, not query results (rows). Use Prisma Client or `prisma studio` to view data.
+- **No Data Return**: The command reports success/failure, not query results (rows). Use Prisma Client or
+  `prisma studio` to view data.
 - **SQL Only**: Primarily for SQL databases.

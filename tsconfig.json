@@ -7,9 +7,12 @@
     "esModuleInterop": true,
     "ignoreDeprecations": "6.0",
     "sourceMap": true,
-    "inlineSources": true,         // Ensure original TS content is mapped
-    "sourceRoot": "./src"          // Tells the debugger exactly where files live
+    "inlineSources": true,
+    // Ensure original TS content is mapped
+    "sourceRoot": "./src"
+    // Tells the debugger exactly where files live
   },
-  "include": ["src"],
-
+  "include": [
+    "src"
+  ]
 }

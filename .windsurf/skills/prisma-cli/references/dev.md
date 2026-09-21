@@ -1,6 +1,7 @@
 # prisma dev
 
-Starts a local Prisma Postgres database for development. Provides a PostgreSQL-compatible database that runs entirely on your machine.
+Starts a local Prisma Postgres database for development. Provides a PostgreSQL-compatible database that runs entirely on
+your machine.
 
 ## Command
 
@@ -17,14 +18,14 @@ prisma dev [options]
 
 ## Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--name` / `-n` | Name for the database instance | `default` |
-| `--port` / `-p` | HTTP server port | `51213` |
-| `--db-port` / `-P` | Database server port | `51214` |
-| `--shadow-db-port` | Shadow database port (for migrations) | `51215` |
-| `--detach` / `-d` | Run in background | `false` |
-| `--debug` | Enable debug logging | `false` |
+| Option             | Description                           | Default   |
+|--------------------|---------------------------------------|-----------|
+| `--name` / `-n`    | Name for the database instance        | `default` |
+| `--port` / `-p`    | HTTP server port                      | `51213`   |
+| `--db-port` / `-P` | Database server port                  | `51214`   |
+| `--shadow-db-port` | Shadow database port (for migrations) | `51215`   |
+| `--detach` / `-d`  | Run in background                     | `false`   |
+| `--debug`          | Enable debug logging                  | `false`   |
 
 ## Examples
 
@@ -35,8 +36,9 @@ prisma dev
 ```
 
 Interactive mode with keyboard shortcuts:
+
 - `q` - Quit
-- `h` - Show HTTP URL  
+- `h` - Show HTTP URL
 - `t` - Show TCP URLs
 
 ### Named instance

@@ -8,7 +8,8 @@ HIGH
 
 ## Why It Matters
 
-Many Prisma Postgres tasks are quickest in the Console: viewing Studio data, checking metrics, and retrieving connection details. This avoids unnecessary API or CLI work for simple operational tasks.
+Many Prisma Postgres tasks are quickest in the Console: viewing Studio data, checking metrics, and retrieving connection
+details. This avoids unnecessary API or CLI work for simple operational tasks.
 
 ## Console workflow
 
@@ -39,7 +40,8 @@ For CI or non-interactive usage:
 prisma postgres link --api-key "<your-api-key>" --database "db_..."
 ```
 
-This command updates or creates `.env` with `DATABASE_URL`. If the project is already linked, use `--force` to re-link. After linking, run `prisma generate`, then `prisma migrate dev` if you need to apply the schema.
+This command updates or creates `.env` with `DATABASE_URL`. If the project is already linked, use `--force` to re-link.
+After linking, run `prisma generate`, then `prisma migrate dev` if you need to apply the schema.
 
 ## Connection setup
 
@@ -55,12 +57,15 @@ Typical direct TCP format:
 DATABASE_URL="postgres://identifier:key@db.prisma.io:5432/postgres?sslmode=require"
 ```
 
-Management API connection responses expose both `endpoints.direct` (`db.prisma.io:5432`) and `endpoints.pooled` (`pooled.db.prisma.io:5432`); prefer those fields over the deprecated flat `connectionString`. Connection secrets are shown once at creation (one-time view); store them immediately.
+Management API connection responses expose both `endpoints.direct` (`db.prisma.io:5432`) and `endpoints.pooled` (
+`pooled.db.prisma.io:5432`); prefer those fields over the deprecated flat `connectionString`. Connection secrets are
+shown once at creation (one-time view); store them immediately.
 
 ## Adapter choices
 
 - Standard Node.js apps: prefer `@prisma/adapter-pg` with the direct TCP URL above.
-- Edge/serverless runtimes: use `@prisma/adapter-ppg` with `@prisma/ppg` only when you specifically need the Prisma Postgres serverless driver.
+- Edge/serverless runtimes: use `@prisma/adapter-ppg` with `@prisma/ppg` only when you specifically need the Prisma
+  Postgres serverless driver.
 
 ## References
 

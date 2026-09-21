@@ -1,8 +1,9 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
+import {Request, Response} from 'express';
 
-export const GetTaskPriorities = async (req: any, res: any) => {
+export const GetTaskPriorities = async (req: Request, res: Response) => {
     try {
         const TaskPriority = await prismaConfig.taskPriority.findMany();
         res.status(200).json(TaskPriority);
@@ -11,7 +12,7 @@ export const GetTaskPriorities = async (req: any, res: any) => {
     }
 
 };
-export const GetTaskPriorityTitle = async (req: any, res: any) => {
+export const GetTaskPriorityTitle = async (req: Request, res: Response) => {
     try {
         const {PriorityTitle} = req.query;
 
@@ -37,7 +38,7 @@ export const GetTaskPriorityTitle = async (req: any, res: any) => {
 };
 
 
-export const GetTaskPriorityID = async (req: any, res: any) => {
+export const GetTaskPriorityID = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const taskPriorities = await prismaConfig.taskPriority.findUnique({
@@ -57,7 +58,7 @@ export const GetTaskPriorityID = async (req: any, res: any) => {
     }
 };
 
-export const CreateTaskPriority = async (req: any, res: any) => {
+export const CreateTaskPriority = async (req: Request, res: Response) => {
     try {
         const {PriorityID, PriorityTitle, Task} = req.body;
         const newTaskPriority = await prismaConfig.taskPriority.create({
@@ -85,7 +86,7 @@ export const CreateTaskPriority = async (req: any, res: any) => {
     // res.status(400).json({message: `Error creating task priority: ${error.message}`})
 };
 
-export const UpdateTaskPriority = async (req: any, res: any) => {
+export const UpdateTaskPriority = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {PriorityTitle} = req.body;
@@ -119,7 +120,7 @@ export const UpdateTaskPriority = async (req: any, res: any) => {
     }
 };
 
-export const DeleteTaskPriority = async (req: any, res: any) => {
+export const DeleteTaskPriority = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const deletedTaskPriority = await prismaConfig.taskPriority.delete({

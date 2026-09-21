@@ -14,6 +14,7 @@ Guidance for creating, managing, and integrating Prisma Postgres across interact
 ## When to Apply
 
 Reference this skill when:
+
 - Setting up Prisma Postgres from Prisma Console
 - Provisioning instant temporary databases with `create-db`
 - Linking an existing local project with `prisma postgres link`
@@ -23,19 +24,20 @@ Reference this skill when:
 
 ## Rule Categories by Priority
 
-| Priority | Category | Impact | Prefix |
-|----------|----------|--------|--------|
-| 1 | CLI Provisioning | CRITICAL | `create-db-cli` |
-| 2 | Management API | CRITICAL | `management-api` |
-| 3 | Management API SDK | HIGH | `management-api-sdk` |
-| 4 | Console and Connections | HIGH | `console-and-connections` |
+| Priority | Category                | Impact   | Prefix                    |
+|----------|-------------------------|----------|---------------------------|
+| 1        | CLI Provisioning        | CRITICAL | `create-db-cli`           |
+| 2        | Management API          | CRITICAL | `management-api`          |
+| 3        | Management API SDK      | HIGH     | `management-api-sdk`      |
+| 4        | Console and Connections | HIGH     | `console-and-connections` |
 
 ## Quick Reference
 
 - `create-db-cli` - instant databases and current CLI flags (`--ttl`, `--copy`, `--quiet`, `--open`)
 - `management-api` - service token and OAuth API workflows
 - `management-api-sdk` - typed SDK usage with token storage
-- `console-and-connections` - Console operations, `prisma postgres link`, direct TCP connections, and serverless-driver choices
+- `console-and-connections` - Console operations, `prisma postgres link`, direct TCP connections, and serverless-driver
+  choices
 
 ## Core Workflows
 
@@ -79,7 +81,8 @@ npx -y @prisma/cli@latest database usage db_123
 npx -y @prisma/cli@latest database backup list db_123
 ```
 
-`database create` and `database connection create` print a one-time connection URL; store it immediately. Destructive commands (`remove`, `restore`) require exact `--confirm <id>`.
+`database create` and `database connection create` print a one-time connection URL; store it immediately. Destructive
+commands (`remove`, `restore`) require exact `--confirm <id>`.
 
 ### 3. Link an existing local project
 
@@ -138,4 +141,5 @@ references/management-api-sdk.md
 
 ## How to Use
 
-Start with `references/create-db-cli.md` for fast setup, then switch to `references/management-api.md` or `references/management-api-sdk.md` when you need programmatic provisioning.
+Start with `references/create-db-cli.md` for fast setup, then switch to `references/management-api.md` or
+`references/management-api-sdk.md` when you need programmatic provisioning.

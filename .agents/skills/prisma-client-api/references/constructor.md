@@ -54,12 +54,12 @@ const prisma = new PrismaClient({
 
 #### Log levels
 
-| Level | Description |
-|-------|-------------|
-| `query` | All SQL queries |
-| `info` | Informational messages |
-| `warn` | Warnings |
-| `error` | Errors |
+| Level   | Description            |
+|---------|------------------------|
+| `query` | All SQL queries        |
+| `info`  | Informational messages |
+| `warn`  | Warnings               |
+| `error` | Errors                 |
 
 #### Log to events
 
@@ -110,7 +110,8 @@ await withQueryTags({ route: '/api/users', requestId: 'req-123' }, () =>
 )
 ```
 
-Use `comments` only for SQL providers. This is the clean way to add trace or query-shape metadata without changing your query calls.
+Use `comments` only for SQL providers. This is the clean way to add trace or query-shape metadata without changing your
+query calls.
 
 ### transactionOptions
 

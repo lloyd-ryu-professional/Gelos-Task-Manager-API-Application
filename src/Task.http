@@ -1,0 +1,73 @@
+@baseURL = http://localhost:5000
+
+#DO THIS
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5OTU0OTE1LCJleHAiOjE3ODk5NjIxMTV9.wt_e_v_yDDm5dVEwljn5Jh_QZUfpHD8KjUf_1u7O7z8
+
+#NOT THIS
+#@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
+
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
+GET {{baseURL}}/tasks
+Authorization: Bearer {{JWTToken}}
+
+###
+GET {{baseURL}}/tasks/search?TaskName=task
+Authorization: Bearer {{JWTToken}}
+
+###
+
+GET {{baseURL}}/tasks/2
+Authorization: Bearer {{JWTToken}}
+
+###
+
+POST {{baseURL}}/tasks
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserID": 1,
+  "TaskName": "Make a bagel",
+  "DueDate": "2026-10-01T14:00:00.000+00:00",
+  "PriorityID": 1,
+  "ConsultantID": 6,
+  "IsCompleted": false
+}
+
+###
+
+PUT {{baseURL}}/tasks/4
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserID": 2,
+  "TaskName": "Make coffee",
+  "DueDate": "2026-10-01T14:00:00.000+00:00",
+  "PriorityID": 2,
+  "ConsultantID": 6,
+  "IsCompleted": false
+}
+
+###
+
+PATCH {{baseURL}}/tasks/4
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "IsCompleted": true
+}
+
+###
+
+DELETE {{baseURL}}/tasks/4
+Authorization: Bearer {{JWTToken}}

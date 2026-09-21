@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken'
-import { NextFunction, Request, Response } from "express";
+import {NextFunction, Request, Response} from "express";
 
 interface AuthenticatedRequest extends Request {
     user?: any;
 }
 
-export const auth = async (req: AuthenticatedRequest,  res: Response, next: NextFunction) => {
+export const auth = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
 
     const authHeader: any = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return res.status(401).json({ message: 'No token, authorization denied' });
+        return res.status(401).json({message: 'No token, authorization denied'});
     }
 
     if (!process.env.JWT_SECRET) {
@@ -26,7 +26,7 @@ export const auth = async (req: AuthenticatedRequest,  res: Response, next: Next
 
         next();
     } catch (error) {
-        res.status(401).json({ message: 'Invalid token, authorization denied' });
+        res.status(401).json({message: 'Invalid token, authorization denied'});
     }
 };
 

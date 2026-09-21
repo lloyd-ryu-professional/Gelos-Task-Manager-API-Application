@@ -1,38 +1,37 @@
 import "dotenv/config";
-import express from "express";
-import { User } from "@prisma/client";
-import { prismaConfig } from "../../prisma/prisma";
+import {User} from "@prisma/client";
+import {prismaConfig} from "../../prisma/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import {Request, Response} from 'express';
 
+export const Login = async (req: Request, res: Response) => {
 
-export const Login = async (req: express.Request, res: express.Response) => {
-
-    const { username, password } = req.body;
+    const {username, password} = req.body;
 
     if (!username || !password) {
-        return res.status(400).json({ message: "Username and password is required" });
+        return res.status(400).json({message: "Username and password is required"});
     }
 
     try {
         const user: User | null = await prismaConfig.user.findUnique({
-            where: { UserName: username },
+            where: {UserName: username},
             include: {
                 UserRole: true
             }
         });
 
         if (!user) {
-            return res.status(401).json({ message: "Invalid Username or Password" });
+            return res.status(401).json({message: "Invalid Username or Password"});
         }
 
         const isMatch = await bcrypt.compare(password, user.Password);
         if (!isMatch) {
-            return res.status(401).json({ message: "Invalid Username or Password" });
+            return res.status(401).json({message: "Invalid Username or Password"});
         }
 
         if (!process.env.JWT_SECRET) {
-            return res.status(500).json({ message: "Server misconfiguration" });
+            return res.status(500).json({message: "Server misconfiguration"});
         }
 
         // FIXED: Use "role" instead of "roleId"
@@ -41,7 +40,7 @@ export const Login = async (req: express.Request, res: express.Response) => {
             role: user.UserRoleID
         };
 
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "2h" });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: "2h"});
 
         res.status(200).json({
             message: "Login Successful",
@@ -55,16 +54,16 @@ export const Login = async (req: express.Request, res: express.Response) => {
 
     } catch (error) {
         console.error("Login error:", error);
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({message: "Server error"});
     }
 };
 
-export const Logout = async (req: express.Request, res: express.Response) => {
+export const Logout = async (req: Request, res: Response) => {
 
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(400).json({ message: "No token provided" });
+        return res.status(400).json({message: "No token provided"});
     }
-    res.status(200).json({ message: "Logout Successful" });
+    res.status(200).json({message: "Logout Successful"});
 };

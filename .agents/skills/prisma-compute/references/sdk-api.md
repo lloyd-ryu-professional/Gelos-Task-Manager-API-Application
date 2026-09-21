@@ -24,7 +24,8 @@ Config helper:
 import { defineComputeConfig } from "@prisma/compute-sdk/config";
 ```
 
-Use this import in `prisma.compute.ts` for type checking. The helper is an identity function; the CLI loader aliases the import when it evaluates config files, so a user project does not need the SDK solely to load a Compute config.
+Use this import in `prisma.compute.ts` for type checking. The helper is an identity function; the CLI loader aliases the
+import when it evaluates config files, so a user project does not need the SDK solely to load a Compute config.
 
 Create an authenticated Management API client:
 
@@ -36,7 +37,9 @@ const apiClient = createManagementApiClient({
 })
 ```
 
-Token naming differs by surface. `@prisma/cli app ...` uses `PRISMA_SERVICE_TOKEN` for non-interactive service-token auth. The SDK examples here use `PRISMA_API_TOKEN` as an application convention for passing a token into `createManagementApiClient`; the SDK itself only receives the `token` string.
+Token naming differs by surface. `@prisma/cli app ...` uses `PRISMA_SERVICE_TOKEN` for non-interactive service-token
+auth. The SDK examples here use `PRISMA_API_TOKEN` as an application convention for passing a token into
+`createManagementApiClient`; the SDK itself only receives the `token` string.
 
 Deploy a prebuilt artifact:
 
@@ -66,7 +69,10 @@ if (result.isOk()) {
 }
 ```
 
-SDK methods return `Result<T, E>`. Check `isOk()` or `isErr()` instead of assuming errors throw. Deploy results expose app/deployment vocabulary including `appId`, `appName`, `projectId`, `region`, `deploymentId`, `deploymentEndpointDomain`, `appEndpointDomain`, `promoted`, `previousDeploymentId`, `previousDeploymentAction`, and `resolvedConfig`.
+SDK methods return `Result<T, E>`. Check `isOk()` or `isErr()` instead of assuming errors throw. Deploy results expose
+app/deployment vocabulary including `appId`, `appName`, `projectId`, `region`, `deploymentId`,
+`deploymentEndpointDomain`, `appEndpointDomain`, `promoted`, `previousDeploymentId`, `previousDeploymentAction`, and
+`resolvedConfig`.
 
 ## SDK Build Strategies
 
@@ -77,7 +83,8 @@ Project Compute SDK strategies:
 - `NuxtBuild`: expects `.output/server/index.mjs`
 - `AstroBuild`: expects `dist/server/entry.mjs`
 - `NestjsBuild`: builds a NestJS HTTP server artifact
-- `TanstackStartBuild`: runs `vite build` and expects a Nitro node server at `.output/server/index.mjs`; keep `tanstackStart()` and `nitro()` in Vite config
+- `TanstackStartBuild`: runs `vite build` and expects a Nitro node server at `.output/server/index.mjs`; keep
+  `tanstackStart()` and `nitro()` in Vite config
 - `CustomBuild`: runs optional configured build settings and stages a configured artifact entrypoint
 - `BunBuild`: runs `bun build` and needs an explicit entrypoint or `package.json` `main`
 - `PreBuilt`: uses an existing artifact directory and relative entrypoint
@@ -95,7 +102,8 @@ ap-northeast-1
 ap-southeast-1
 ```
 
-Use `--region` in `@prisma/cli app deploy` or `region` in SDK deploy input only when creating a new Compute app. Existing apps keep their current region.
+Use `--region` in `@prisma/cli app deploy` or `region` in SDK deploy input only when creating a new Compute app.
+Existing apps keep their current region.
 
 ## Management API Concepts
 
@@ -116,9 +124,13 @@ Low-level public routes use App/Deployment names:
 - stream logs with `/v1/deployments/:deploymentId/logs`
 - manage custom domains
 
-Internal compatibility aliases may still appear in code. Prefer App/Deployment names in new docs, skills, and automation.
+Internal compatibility aliases may still appear in code. Prefer App/Deployment names in new docs, skills, and
+automation.
 
-Environment variables are not embedded directly in the low-level deployment create payload. The attached branch's role selects their scope: a preview branch resolves branch-scoped vars, while a production branch (or no branch) resolves project-scoped production vars. Use project/environment-variable APIs or CLI env commands to write env vars first, and keep the branch name consistent across app creation, database creation, and env writes.
+Environment variables are not embedded directly in the low-level deployment create payload. The attached branch's role
+selects their scope: a preview branch resolves branch-scoped vars, while a production branch (or no branch) resolves
+project-scoped production vars. Use project/environment-variable APIs or CLI env commands to write env vars first, and
+keep the branch name consistent across app creation, database creation, and env writes.
 
 When using the CLI alongside SDK automation:
 
@@ -128,11 +140,13 @@ bunx @prisma/cli@latest database create preview-db --branch feature/foo --json
 bunx @prisma/cli@latest app deploy --branch feature/foo --json --no-interactive
 ```
 
-Production promotion is not just "the same branch with another label"; `app promote <deployment-id>` rebuilds with production env vars.
+Production promotion is not just "the same branch with another label"; `app promote <deployment-id>` rebuilds with
+production env vars.
 
 ## Secrets and Redaction
 
-Management API deployment inspection exposes env var names with redacted values. Treat any value like `[redacted]` as a marker, not as the deployed value.
+Management API deployment inspection exposes env var names with redacted values. Treat any value like `[redacted]` as a
+marker, not as the deployed value.
 
 Do not log:
 

@@ -8,7 +8,8 @@ CRITICAL
 
 ## Why It Matters
 
-When you need backend automation, multi-tenant onboarding flows, or controlled resource provisioning, the Management API is the source of truth and is more reliable than interactive workflows.
+When you need backend automation, multi-tenant onboarding flows, or controlled resource provisioning, the Management API
+is the source of truth and is more reliable than interactive workflows.
 
 ## Base URL
 
@@ -37,14 +38,16 @@ Authorization: Bearer $TOKEN
 
 ## OAuth flow summary
 
-1. Redirect user to `https://auth.prisma.io/authorize` with `client_id`, `redirect_uri`, `response_type=code`, and scopes.
+1. Redirect user to `https://auth.prisma.io/authorize` with `client_id`, `redirect_uri`, `response_type=code`, and
+   scopes.
 2. Receive `code` on callback.
 3. Exchange code at `https://auth.prisma.io/token`.
 4. Use returned access token in Management API requests.
 
 ## Resource model
 
-Workspace -> Project -> Branch -> Database. Branches are a first-class resource: databases attach to a Branch, and branch-scoped env/databases are how preview isolation works.
+Workspace -> Project -> Branch -> Database. Branches are a first-class resource: databases attach to a Branch, and
+branch-scoped env/databases are how preview isolation works.
 
 ## Common endpoints
 
@@ -54,7 +57,8 @@ Workspace -> Project -> Branch -> Database. Branches are a first-class resource:
 - `GET`/`POST /projects/:projectId/branches`
 - `GET`/`PATCH`/`DELETE /branches/:branchId`
 - Databases at both `/databases` (flat) and `/projects/:projectId/databases`
-- Connection responses return structured `endpoints.direct` and `endpoints.pooled` objects; the flat top-level `connectionString` is deprecated in favor of `endpoints.direct.connectionString`/`endpoints.pooled.connectionString`
+- Connection responses return structured `endpoints.direct` and `endpoints.pooled` objects; the flat top-level
+  `connectionString` is deprecated in favor of `endpoints.direct.connectionString`/`endpoints.pooled.connectionString`
 - Connection secrets are one-time view: revealed at creation, never re-readable from later GETs
 
 ## Notes

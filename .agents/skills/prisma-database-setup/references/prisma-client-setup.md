@@ -1,6 +1,7 @@
 # Prisma Client Setup
 
-Generate and instantiate Prisma Client for Prisma's standard SQL provider workflow. For MongoDB, follow the provider-specific notes in `references/mongodb.md` instead of copying the SQL adapter example below.
+Generate and instantiate Prisma Client for Prisma's standard SQL provider workflow. For MongoDB, follow the
+provider-specific notes in `references/mongodb.md` instead of copying the SQL adapter example below.
 
 ## 1. Install dependencies
 
@@ -40,8 +41,10 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
 const prisma = new PrismaClient({ adapter })
 ```
 
-If you change the generator `output`, update the import path to match. For the SQL provider workflow, replace `PrismaPg` with the adapter for your database.
+If you change the generator `output`, update the import path to match. For the SQL provider workflow, replace `PrismaPg`
+with the adapter for your database.
 
 ## 5. Use a single instance
 
-Each `PrismaClient` instance creates a connection pool. Reuse a single instance per app process to avoid exhausting database connections.
+Each `PrismaClient` instance creates a connection pool. Reuse a single instance per app process to avoid exhausting
+database connections.

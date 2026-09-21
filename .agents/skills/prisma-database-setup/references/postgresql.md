@@ -80,13 +80,16 @@ Use a driver adapter for the standard SQL workflow.
 ## Common Issues
 
 ### "Can't reach database server"
+
 - Check host and port
 - Check firewall settings
 - Ensure database is running
 
 ### "Authentication failed"
+
 - Check user/password
 - Special characters in password must be URL-encoded
 
 ### "Schema does not exist"
+
 - Ensure `?schema=public` (or your schema) is in the URL

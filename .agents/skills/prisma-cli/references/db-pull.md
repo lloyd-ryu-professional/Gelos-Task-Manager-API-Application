@@ -17,16 +17,16 @@ prisma db pull [options]
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| `--force` | Ignore current Prisma schema file |
-| `--print` | Print the introspected Prisma schema to stdout |
-| `--schema` | Custom path to your Prisma schema |
-| `--config` | Custom path to your Prisma config file |
-| `--url` | Override the datasource URL from the Prisma config file |
+| Option                   | Description                                                                             |
+|--------------------------|-----------------------------------------------------------------------------------------|
+| `--force`                | Ignore current Prisma schema file                                                       |
+| `--print`                | Print the introspected Prisma schema to stdout                                          |
+| `--schema`               | Custom path to your Prisma schema                                                       |
+| `--config`               | Custom path to your Prisma config file                                                  |
+| `--url`                  | Override the datasource URL from the Prisma config file                                 |
 | `--composite-type-depth` | Specify the depth for introspecting composite types (default: -1 for infinite, 0 = off) |
-| `--schemas` | Specify the database schemas to introspect |
-| `--local-d1` | Generate a Prisma schema from a local Cloudflare D1 database |
+| `--schemas`              | Specify the database schemas to introspect                                              |
+| `--local-d1`             | Generate a Prisma schema from a local Cloudflare D1 database                            |
 
 ## Examples
 
@@ -180,6 +180,7 @@ May require manual refinement since MongoDB is schemaless.
 ## Warning
 
 `db pull` overwrites your schema file. Always:
+
 - Commit current schema before pulling
 - Use `--print` to preview first
 - Backup customizations you want to keep

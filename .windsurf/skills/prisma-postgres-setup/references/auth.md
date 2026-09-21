@@ -4,7 +4,8 @@ How to authenticate with the Prisma Management API using service tokens.
 
 ## Service Tokens
 
-Service tokens authenticate server-to-server requests. They are scoped to a workspace and grant access to all resources within it.
+Service tokens authenticate server-to-server requests. They are scoped to a workspace and grant access to all resources
+within it.
 
 ### Creating a service token
 
@@ -30,7 +31,8 @@ curl -H "Authorization: Bearer $PRISMA_SERVICE_TOKEN" \
 
 ### Token scope
 
-Service tokens are workspace-scoped. A single token grants access to all projects, databases, and connections within the workspace. There are no project-scoped tokens at this time.
+Service tokens are workspace-scoped. A single token grants access to all projects, databases, and connections within the
+workspace. There are no project-scoped tokens at this time.
 
 ### Security practices
 
@@ -41,6 +43,7 @@ Service tokens are workspace-scoped. A single token grants access to all project
 
 ## OAuth 2.0 (for user-scoped access)
 
-OAuth is used when acting on behalf of a user, typically in partner/integrator flows. See the `prisma-postgres-integrator` skill for OAuth details.
+OAuth is used when acting on behalf of a user, typically in partner/integrator flows. See the
+`prisma-postgres-integrator` skill for OAuth details.
 
 For standard database setup, service tokens are the recommended authentication method.

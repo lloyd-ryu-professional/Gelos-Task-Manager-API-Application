@@ -1,0 +1,72 @@
+@baseURL = http://localhost:5000
+
+#DO THIS
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5OTUwMjc2LCJleHAiOjE3ODk5NTc0NzZ9.AbY6ed8i49t0YYFKfXd_uesgY2CodFoQvnA9ZZhLq2k
+
+#NOT THIS
+#@JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6MiwiaWF0IjoxNzg5Nzk2NzAyLCJleHAiOjE3ODk4MDM5MDJ9.EMIxMIwcf7JSHjECIn7ly7p7U0DLeGkhhPsofHzDc4M"
+
+POST {{baseURL}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adamadam",
+  "password": "password456"
+}
+
+###
+GET {{baseURL}}/users
+Authorization: Bearer {{JWTToken}}
+
+###
+GET {{baseURL}}/users/search?UserName=Adam Admin
+Authorization: Bearer {{JWTToken}}
+
+###
+
+GET {{baseURL}}/users/2
+Authorization: Bearer {{JWTToken}}
+
+###
+
+POST {{baseURL}}/users
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserFirstName": "Lloyd",
+  "UserLastName": "Ryu",
+  "Email": "Lord@fakemail.com",
+  "UserName" : "Lord Doctor-48",
+  "Password": "password4849",
+  "UserRoleID": 1
+}
+
+###
+
+PUT {{baseURL}}/users/3
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserFirstName": "Lloyd",
+  "UserLastName": "Ryu",
+  "Email": "Doc@fakemail.com",
+  "UserName" : "Lord Doctor-48",
+  "Password": "password4849",
+  "UserRoleID": 1
+}
+
+###
+
+PATCH {{baseURL}}/users/3
+Authorization: Bearer {{JWTToken}}
+Content-Type: application/json
+
+{
+  "UserRoleID": 2
+}
+###
+
+DELETE {{baseURL}}/users/3
+Authorization: Bearer {{JWTToken}}

@@ -1,8 +1,9 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
+import { Request, Response } from 'express';
 
-export const GetAllConsultants = async (req: any, res: any) => {
+export const GetAllConsultants = async (req: Request, res: Response) => {
     try {
         const Consultant = await prismaConfig.consultant.findMany();
         res.status(200).json(Consultant);
@@ -12,7 +13,7 @@ export const GetAllConsultants = async (req: any, res: any) => {
     }
 };
 
-export const GetConsultant = async (req: any, res: any) => {
+export const GetConsultant = async (req: Request, res: Response) => {
     try {
         const {ConsultantName} = req.query;
 
@@ -81,7 +82,7 @@ export const GetConsultant = async (req: any, res: any) => {
     }
 };
 
-export const GetConsultantID = async (req: any, res: any) => {
+export const GetConsultantID = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const Consultants = await prismaConfig.consultant.findUnique({
@@ -101,7 +102,7 @@ export const GetConsultantID = async (req: any, res: any) => {
     }
 };
 
-export const CreateConsultant = async (req: any, res: any) => {
+export const CreateConsultant = async (req: Request, res: Response) => {
     try {
         const {ConsultantID, ConsultantFirstName, ConsultantLastName, ConsultantRole, Task} = req.body;
         const newConsultant = await prismaConfig.consultant.create({
@@ -126,7 +127,7 @@ export const CreateConsultant = async (req: any, res: any) => {
     }
 };
 
-export const UpdateAllConsultant = async (req: any, res: any) => {
+export const UpdateAllConsultant = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {ConsultantFirstName, ConsultantLastName, ConsultantRole} = req.body;
@@ -153,7 +154,7 @@ export const UpdateAllConsultant = async (req: any, res: any) => {
     }
 };
 
-export const UpdateConsultant = async (req: any, res: any) => {
+export const UpdateConsultant = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {ConsultantFirstName, ConsultantLastName, ConsultantRole} = req.body;
@@ -180,7 +181,7 @@ export const UpdateConsultant = async (req: any, res: any) => {
     }
 };
 
-export const DeleteConsultant = async (req: any, res: any) => {
+export const DeleteConsultant = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const deletedConsultant = await prismaConfig.consultant.delete({

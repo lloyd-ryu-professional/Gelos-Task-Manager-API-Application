@@ -1,8 +1,9 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
+import { Request, Response } from 'express';
 
-export const GetAllUsers = async (req: any, res: any) => {
+export const GetAllUsers = async (req: Request, res: Response) => {
     try {
         const User = await prismaConfig.user.findMany({
             include: {
@@ -19,7 +20,7 @@ export const GetAllUsers = async (req: any, res: any) => {
     }
 };
 
-export const GetUser = async (req: any, res: any) => {
+export const GetUser = async (req: Request, res: Response) => {
     try {
         const {UserName} = req.query;
 
@@ -95,7 +96,7 @@ export const GetUser = async (req: any, res: any) => {
     }
 };
 
-export const GetUsersID = async (req: any, res: any) => {
+export const GetUsersID = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const Users = await prismaConfig.user.findUnique({
@@ -122,7 +123,7 @@ export const GetUsersID = async (req: any, res: any) => {
     }
 };
 
-export const CreateUser = async (req: any, res: any) => {
+export const CreateUser = async (req: Request, res: Response) => {
     try {
         const {UserID, UserName, UserFirstName, UserLastName, Email, Password, UserRoleID} = req.body;
         const newUser = await prismaConfig.user.create({
@@ -157,7 +158,7 @@ export const CreateUser = async (req: any, res: any) => {
     }
 };
 
-export const UpdateAllUser = async (req: any, res: any) => {
+export const UpdateAllUser = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {UserID, UserName, UserFirstName, UserLastName, Email, Password, UserRoleID, Task} = req.body;
@@ -194,7 +195,7 @@ export const UpdateAllUser = async (req: any, res: any) => {
     }
 };
 
-export const UpdateUser = async (req: any, res: any) => {
+export const UpdateUser = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {UserID, UserName, UserFirstName, UserLastName, Email, Password, UserRoleID, Task} = req.body;
@@ -231,7 +232,7 @@ export const UpdateUser = async (req: any, res: any) => {
     }
 }
 
-export const DeleteUser = async (req: any, res: any) => {
+export const DeleteUser = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const deletedConsultant = await prismaConfig.user.delete({

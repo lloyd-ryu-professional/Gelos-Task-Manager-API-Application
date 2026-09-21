@@ -1,8 +1,9 @@
 import "dotenv/config";
 import {Prisma} from "@prisma/client";
 import {prismaConfig} from "../../prisma/prisma"
+import { Request, Response } from 'express';
 
-export const GetUserRoles = async (req: any, res: any) => {
+export const GetUserRoles = async (req: Request, res: Response) => {
     try {
         const UserRole = await prismaConfig.userRole.findMany();
         res.status(200).json(UserRole);
@@ -11,7 +12,7 @@ export const GetUserRoles = async (req: any, res: any) => {
     }
 };
 
-export const GetUserRoleName = async (req: any, res: any) => {
+export const GetUserRoleName = async (req: Request, res: Response) => {
     try {
         const {UserRoleName} = req.query;
 
@@ -36,7 +37,7 @@ export const GetUserRoleName = async (req: any, res: any) => {
 };
 
 
-export const GetUserRoleID = async (req: any, res: any) => {
+export const GetUserRoleID = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const UserRoleNames = await prismaConfig.userRole.findUnique({
@@ -56,7 +57,7 @@ export const GetUserRoleID = async (req: any, res: any) => {
     }
 };
 
-export const CreateUserRole = async (req: any, res: any) => {
+export const CreateUserRole = async (req: Request, res: Response) => {
     try {
         const {UserRoleID, UserRoleName, User} = req.body;
         const newUserRole = await prismaConfig.userRole.create({
@@ -83,7 +84,7 @@ export const CreateUserRole = async (req: any, res: any) => {
     }
 };
 
-export const UpdateUserRole = async (req: any, res: any) => {
+export const UpdateUserRole = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const {UserRoleName} = req.body;
@@ -117,7 +118,7 @@ export const UpdateUserRole = async (req: any, res: any) => {
     }
 };
 
-export const DeleteUserRole = async (req: any, res: any) => {
+export const DeleteUserRole = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
         const deletedUserRole = await prismaConfig.userRole.delete({

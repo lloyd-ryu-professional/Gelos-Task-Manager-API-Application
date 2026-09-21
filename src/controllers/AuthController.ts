@@ -1,12 +1,11 @@
 import "dotenv/config";
-import express from "express";
 import { User } from "@prisma/client";
 import { prismaConfig } from "../../prisma/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { Request, Response } from 'express';
 
-
-export const Login = async (req: express.Request, res: express.Response) => {
+export const Login = async (req: Request, res: Response) => {
 
     const { username, password } = req.body;
 
@@ -59,7 +58,7 @@ export const Login = async (req: express.Request, res: express.Response) => {
     }
 };
 
-export const Logout = async (req: express.Request, res: express.Response) => {
+export const Logout = async (req: Request, res: Response) => {
 
     const authHeader = req.headers.authorization;
 

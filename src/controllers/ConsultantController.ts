@@ -16,30 +16,57 @@ export const GetConsultant = async (req: any, res: any) => {
     try {
         const {ConsultantName} = req.query;
 
-        const searchQuery = typeof ConsultantName === "string" ? ConsultantName : '';
-
-        /* string validation for priority title */
         if (!ConsultantName || typeof ConsultantName !== "string") {
             res.status(400).json({message: "A valid PriorityTitle query parameter is required."});
             return;
         }
 
-        const Consultants = await prismaConfig.consultant.findMany({
-            where: {
+        const searchQuery = ConsultantName.trim();
+        const parts = searchQuery.split(" ").filter(Boolean);
+
+        let whereClause: any = {};
+
+        /* Checks if the user only entered first and last name not a full name */
+        if (parts.length === 1) {
+            whereClause = {
                 OR: [
                     {
                         ConsultantFirstName: {
-                            contains: searchQuery,
-                        },
+                            contains: parts[0],
+                        }
                     },
                     {
                         ConsultantLastName: {
-                            contains: searchQuery,
-                        },
+                            contains: parts[0],
+                        }
+                    }
+                ]
+            };
+        } else {
+            const firstName = parts[0];
+            const lastName = parts.slice(1).join(" ");
+
+            /* Checks if the user entered a full name */
+            whereClause = {
+                AND: [
+                    {
+                        ConsultantFirstName: {
+                            contains: firstName,
+                        }
                     },
-                ],
-            },
-        });
+                    {
+                        ConsultantLastName: {
+                            contains: lastName,
+                        }
+                    }
+                ]
+            };
+        }
+
+        const Consultants = await prismaConfig.consultant.findMany(
+            {
+                where: whereClause
+            });
 
         if (Consultants.length === 0) {
             res.status(404).json({

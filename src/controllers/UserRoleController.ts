@@ -17,7 +17,6 @@ export const GetUserRoleName = async (req: any, res: any) => {
 
         const searchQuery = typeof UserRoleName === "string" ? UserRoleName : '';
 
-        /* string validation for priority title */
         if (!UserRoleName || typeof UserRoleName !== "string") {
             res.status(400).json({message: "A valid UserRoleName query parameter is required."});
             return;
@@ -82,7 +81,6 @@ export const CreateUserRole = async (req: any, res: any) => {
         // Fallback for other errors
         return res.status(500).json({message: "Internal server error", error: error.message});
     }
-    // res.status(400).json({message: `Error creating task priority: ${error.message}`})
 };
 
 export const UpdateUserRole = async (req: any, res: any) => {
@@ -103,7 +101,7 @@ export const UpdateUserRole = async (req: any, res: any) => {
         }
         res.status(200).json(updatedUserRole);
     } catch (error: any) {
-        // res.status(400).json({message: `Error updating task priority: ${error.message}`})
+
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
             if (error.code === 'P2002') {
                 return res.status(409).json({
